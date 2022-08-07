@@ -10,4 +10,5 @@ export class HelloController {
   getHello() {
     return this.service.getHello();
   }
+  
 }
