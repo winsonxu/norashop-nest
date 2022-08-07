@@ -6,7 +6,7 @@ import {
   HttpStatus,
   Logger,
 } from '@nestjs/common';
-import { BusinessException } from 'src/exception/BusinessException';
+import { BusinessException } from 'src/core/exception/BusinessException';
 
 @Catch()
 export class GlobalExceptionFilter implements ExceptionFilter {
@@ -15,21 +15,19 @@ export class GlobalExceptionFilter implements ExceptionFilter {
     const response = ctx.getResponse();
     const request = ctx.getRequest();
     console.log(exception);
-    if(exception instanceof BusinessException){
+    if (exception instanceof BusinessException) {
       // 断言UserException类型主体一个是有{code,message}类型
-      response
-        .status(exception.getStatus())
-        .json(exception.getResponse());
-    }else if(exception instanceof HttpException){
+      response.status(exception.getStatus()).json(exception.getResponse());
+    } else if (exception instanceof HttpException) {
       const status = exception.getStatus();
       response.status(status).json({
         code: status,
-        message: exception.message
+        message: exception.message,
       });
-    }else{
+    } else {
       response.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
         code: HttpStatus.INTERNAL_SERVER_ERROR,
-        message: 'error'
+        message: 'error',
       });
     }
   }

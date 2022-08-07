@@ -1,6 +1,6 @@
 import { Controller, Get } from '@nestjs/common';
 import { AppService } from './app.service';
-import { JsonResult } from './common/domin/JsonResult';
+import { JsonResult } from '../core/common/domin/JsonResult';
 
 @Controller()
 export class AppController {
@@ -8,17 +8,17 @@ export class AppController {
 
   @Get()
   getHello() {
-    return this.appService.getHello()
+    return 'Norait';
   }
 
   @Get('hello2')
-  getHello2(){
+  getHello2() {
     return JsonResult.ok(10, '成功了');
   }
 
   @Get('/UserException')
   getUserException() {
-    return JsonResult.error(-1,'不允许操作');
+    return JsonResult.error(-1, '不允许操作');
   }
 
   @Get('/exception')
@@ -27,7 +27,7 @@ export class AppController {
   }
 
   @Get('/unhandledException')
-  getUnhandledException(){
+  getUnhandledException() {
     throw new Error(`Unhandled exception`);
   }
 }
