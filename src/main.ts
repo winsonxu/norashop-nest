@@ -1,3 +1,9 @@
+/*
+ * @Author: winsonxu 
+ * @Date: 2022-08-11 16:45:00 
+ * @Last Modified by:   winsonxu 
+ * @Last Modified time: 2022-08-11 16:45:00 
+ */
 import { Logger, ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';

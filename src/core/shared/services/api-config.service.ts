@@ -1,3 +1,9 @@
+/*
+ * @Author: winsonxu 
+ * @Date: 2022-08-11 16:44:46 
+ * @Last Modified by:   winsonxu 
+ * @Last Modified time: 2022-08-11 16:44:46 
+ */
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import type { TypeOrmModuleOptions } from '@nestjs/typeorm';

@@ -1,3 +1,9 @@
+/*
+ * @Author: winsonxu 
+ * @Date: 2022-08-11 16:44:54 
+ * @Last Modified by:   winsonxu 
+ * @Last Modified time: 2022-08-11 16:44:54 
+ */
 import { DataSource } from 'typeorm';
 import { SnakeNamingStrategy } from '../core/common/snake-naming.strategy';
 import 'dotenv/config';

@@ -1,3 +1,9 @@
+/*
+ * @Author: winsonxu 
+ * @Date: 2022-08-11 16:44:20 
+ * @Last Modified by:   winsonxu 
+ * @Last Modified time: 2022-08-11 16:44:20 
+ */
 import type { NamingStrategyInterface } from 'typeorm';
 import { DefaultNamingStrategy } from 'typeorm';
 import { snakeCase } from 'typeorm/util/StringUtils';

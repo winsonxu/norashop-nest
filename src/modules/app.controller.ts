@@ -1,3 +1,9 @@
+/*
+ * @Author: winsonxu 
+ * @Date: 2022-08-11 16:45:12 
+ * @Last Modified by:   winsonxu 
+ * @Last Modified time: 2022-08-11 16:45:12 
+ */
 import { Controller, Get } from '@nestjs/common';
 import { AppService } from './app.service';
 import { JsonResult } from '../core/common/json-result';
