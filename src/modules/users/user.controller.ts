@@ -1,5 +1,5 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
-import { JsonResult } from '../../core/common/domin/JsonResult';
+import { JsonResult } from '../../core/common/json-result';
 import datasource from '../../database/datasource';
 import { UserEntity } from './user.entity';
 

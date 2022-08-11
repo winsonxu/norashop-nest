@@ -1,5 +1,5 @@
 import { HttpException, Injectable } from '@nestjs/common';
-import { BusinessException } from '../../core/exception/BusinessException';
+import { BusinessException } from '../../core/exception/business.exception';
 
 @Injectable()
 export class HelloService {

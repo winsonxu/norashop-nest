@@ -1,9 +1,9 @@
 import { Logger, ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { TransformInterceptor } from './core/interceptor/TransformInterceptor';
+import { TransformInterceptor } from './core/interceptor/transform.interceptor';
 import { ConfigService } from '@nestjs/config';
-import { GlobalExceptionFilter } from './core/filter/GlobalExceptionFilter';
+import { GlobalExceptionFilter } from './core/filter/global-exception.filter';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);

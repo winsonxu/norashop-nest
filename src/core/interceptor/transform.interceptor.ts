@@ -6,7 +6,7 @@ import {
 } from '@nestjs/common';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { JsonResult } from 'src/core/common/domin/JsonResult';
+import { JsonResult } from 'src/core/common/json-result';
 export interface Response<T> {
   data: T;
 }

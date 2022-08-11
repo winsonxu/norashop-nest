@@ -1,8 +1,8 @@
 {
   "name": "norashop-nest",
   "version": "0.0.1",
-  "description": "",
-  "author": "",
+  "description": "open source shop",
+  "author": "norait",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {

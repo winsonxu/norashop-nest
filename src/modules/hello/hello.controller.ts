@@ -1,5 +1,5 @@
 import { Controller, Get } from '@nestjs/common';
-import { JsonResult } from '../../core/common/domin/JsonResult';
+import { JsonResult } from '../../core/common/json-result';
 import { HelloService } from './hello.service';
 
 @Controller('/hello')

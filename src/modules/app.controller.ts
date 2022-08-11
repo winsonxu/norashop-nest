@@ -1,6 +1,6 @@
 import { Controller, Get } from '@nestjs/common';
 import { AppService } from './app.service';
-import { JsonResult } from '../core/common/domin/JsonResult';
+import { JsonResult } from '../core/common/json-result';
 
 @Controller()
 export class AppController {

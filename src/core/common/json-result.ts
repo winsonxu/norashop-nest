@@ -1,4 +1,4 @@
-import { BusinessException } from 'src/core/exception/BusinessException';
+import { BusinessException } from 'src/core/exception/business.exception';
 
 export class JsonResult {
   public message: string;
