@@ -1,9 +1,10 @@
 /*
  * @Author: winsonxu 
- * @Date: 2022-08-11 16:44:12 
+ * @Date: 2022-08-11 16:53:20 
  * @Last Modified by:   winsonxu 
- * @Last Modified time: 2022-08-11 16:44:12 
+ * @Last Modified time: 2022-08-11 16:53:20 
  */
+
 import { BusinessException } from 'src/core/exception/business.exception';
 
 export class JsonResult {

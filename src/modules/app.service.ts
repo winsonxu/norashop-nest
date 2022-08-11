@@ -1,8 +1,7 @@
 /*
- * @Author: winsonxu 
- * @Date: 2022-08-11 16:45:07 
- * @Last Modified by:   winsonxu 
- * @Last Modified time: 2022-08-11 16:45:07 
+ * @Author: 2022-8-11 17:05:34
+ * @Date: winsonxu
+ * Copyright (c) 2016-2022 norait
  */
 import { HttpException, Injectable } from '@nestjs/common';
 import { BusinessException } from '../core/exception/business.exception';
