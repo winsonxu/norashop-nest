@@ -5,10 +5,10 @@
  * @Last Modified time: 2022-08-11 16:45:12 
  */
 import { Controller, Get } from '@nestjs/common';
-import { AppService } from './app.service';
-import { JsonResult } from '../core/common/json-result';
+import { JsonResult } from 'src/core/common/json-result';
+import { AppService } from 'src/modules/services/app.service';
 
-@Controller()
+@Controller('web')
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
@@ -22,17 +22,17 @@ export class AppController {
     return JsonResult.ok(10, '成功了');
   }
 
-  @Get('/UserException')
+  @Get('UserException')
   getUserException() {
     return JsonResult.error(-1, '不允许操作');
   }
 
-  @Get('/exception')
+  @Get('exception')
   getException() {
     return this.appService.getException();
   }
 
-  @Get('/unhandledException')
+  @Get('unhandledException')
   getUnhandledException() {
     throw new Error(`Unhandled exception`);
   }

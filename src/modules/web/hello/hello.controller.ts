@@ -6,10 +6,10 @@
  */
 
 import { Controller, Get } from '@nestjs/common';
-import { JsonResult } from '../../core/common/json-result';
-import { HelloService } from './hello.service';
+import { HelloService } from 'src/modules/services/hello.service';
+import { JsonResult } from '../../../core/common/json-result';
 
-@Controller('/hello')
+@Controller('web/hello')
 export class HelloController {
   constructor(private readonly service: HelloService) {}
 

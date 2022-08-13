@@ -8,8 +8,8 @@ import { Injectable } from "@nestjs/common";
 import { PassportStrategy } from '@nestjs/passport';
 import { Strategy, ExtractJwt, VerifiedCallback } from "passport-jwt";
 import { BusinessException } from "src/core/exception/business.exception";
-import { UserEntity } from "src/modules/users/user.entity";
-import { UserService } from "src/modules/users/user.service";
+import { UserEntity } from "src/modules/entities/user.entity";
+import { UserService } from "src/modules/services/user.service";
 import { JwtConstants } from "./jwt.constants";
 import { JwtPayload } from "./jwt.payload";
 
@@ -22,7 +22,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
       secretOrKey: JwtConstants.secret
     })
   }
-  async validate(payload: JwtPayload, done: VerifiedCallback):Promise<UserEntity>{
+  async validate(payload: JwtPayload, done: VerifiedCallback): Promise<UserEntity | null>{
     return await this.userService.getById(payload.id);
   }
 }

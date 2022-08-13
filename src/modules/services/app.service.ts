@@ -4,7 +4,7 @@
  * Copyright (c) 2016-2022 norait
  */
 import { HttpException, Injectable } from '@nestjs/common';
-import { BusinessException } from '../core/exception/business.exception';
+import { BusinessException } from 'src/core/exception/business.exception';
 
 @Injectable()
 export class AppService {

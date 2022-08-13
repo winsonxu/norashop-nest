@@ -12,11 +12,17 @@
     "baseUrl": "./",
     "incremental": true,
     "skipLibCheck": true,
-    "strictNullChecks": false,
-    "noImplicitAny": false,
-    "strictBindCallApply": false,
+    "strictBindCallApply": false, //在使用 bind、call 和 apply 语法的时候，是否进行参数检查。
     "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false
+    "noFallthroughCasesInSwitch": false,
+
+    "strictNullChecks": true,//严格空检查。如果关闭此选项，则 null 和 undefined 两种类型是任意类型的子类型
+    "noImplicitAny": true, //不允许出现隐式的 any 类型
+    "strictFunctionTypes": true,//严格函数类型检查。
+    "strictPropertyInitialization": false, //严格属性初始化检查。这个选项要和 strictNullChecks 配合使用才行
+    "noImplicitThis": true,//不允许出现隐式any类型的this
+    "alwaysStrict": true //是否开启严格模式。这个不用多说，就是 JavaScript 中的 "use strict"，肯定是要开启的
+
   },
   "include": [
     "src/**/*"
