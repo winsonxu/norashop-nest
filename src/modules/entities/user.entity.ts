@@ -1,3 +1,12 @@
+/*
+ * @Author: winsonxu winsonxu@outlook.com
+ * @Date: 2022-08-07 22:52:47
+ * @LastEditors: winsonxu winsonxu@outlook.com
+ * @LastEditTime: 2022-08-13 12:42:16
+ * @Description: 
+ * 
+ * Copyright (c) 2022 by norait, All Rights Reserved. 
+ */
 import { Column, Entity, Index, PrimaryGeneratedColumn } from "typeorm";
 
 @Index("access_token", ["accessToken"], {})
@@ -55,4 +64,7 @@ export class UserEntity{
 
   @Column("tinyint", { name: "is_delete", width: 1, default: () => "'0'" })
   isDelete: boolean;
+
+  @Column("json", { name: "menu", default: () => {} })
+  menu: object;
 }

@@ -2,7 +2,7 @@
  * @Author: winsonxu winsonxu@outlook.com
  * @Date: 2022-08-07 21:10:19
  * @LastEditors: winsonxu winsonxu@outlook.com
- * @LastEditTime: 2022-08-13 09:44:19
+ * @LastEditTime: 2022-08-13 13:18:27
  * @Description: 
  * 
  * Copyright (c) 2022 by norait, All Rights Reserved. 
@@ -14,12 +14,12 @@ import { UserEntity } from 'src/modules/entities/user.entity';
 import datasource from '../../../database/datasource';
 import { UserService } from '../../services/user.service';
 
-@Controller('web/users')
+@Controller('web/user')
 @UseGuards(AuthGuard('jwt'))
-export class UsersController {
+export class UserController {
   constructor(private readonly userService: UserService){}
 
-  @Get()
+  @Get('list')
   async getUsers(@User() user: UserEntity): Promise<UserEntity[]> {
     console.log('user', user);
     const manager =  datasource.manager.getRepository(UserEntity)
@@ -27,7 +27,7 @@ export class UsersController {
     return users;
   }
   
-  @Get(':id')
+  @Get('detail/:id')
   async getUserById(@Param('id') id:number) : Promise<UserEntity | null>{
     console.log(id);
     const manager =  datasource.manager.getRepository(UserEntity)
@@ -35,10 +35,16 @@ export class UsersController {
     return user;
   }
 
-  @Post()
+  @Post('create')
   async addUser(@Body() user:UserEntity) : Promise<UserEntity>{
     const manager =  datasource.manager
     const result = await manager.save(Object.assign(new UserEntity, user));
     return result;
   }
+
+  @Post('setPassword')
+  async setPassword(@Body("id") id:number, @Body("password") password:string): Promise<void>{
+    return this.userService.setPassword(id, password);
+  }
+
 }

@@ -10,12 +10,12 @@ import { UserService } from "../services/user.service"
 import { AppController } from "./app/app.controller"
 import { AuthController } from "./auth/auth.controller"
 import { HelloController } from "./hello/hello.controller"
-import { UsersController } from "./users/user.controller"
+import { UserController } from "./users/user.controller"
 
 const controllers = [
   AppController,
   AuthController,
-  UsersController,
+  UserController,
   HelloController
 ]
 

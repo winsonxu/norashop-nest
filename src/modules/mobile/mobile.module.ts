@@ -9,10 +9,10 @@
  */
 import { Module } from "@nestjs/common"
 import { ServiceModule } from "../services/services.module"
-import { UsersController } from "./users/user.controller"
+import { UserController } from "./users/user.controller"
 
 const controllers = [
-  UsersController,
+  UserController,
 ]
 
 // const services = [

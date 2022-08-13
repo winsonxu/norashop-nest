@@ -8,7 +8,10 @@
  * Copyright (c) 2022 by norait, All Rights Reserved. 
  */
 import { createParamDecorator, ExecutionContext } from "@nestjs/common";
-
+/**
+ * @description: 控制器方法使用@User注解或使用@User['字段']
+ * @return {*}
+ */
 export const User = createParamDecorator(
   (data:string, ctx: ExecutionContext) => {
     const request = ctx.switchToHttp().getRequest();
