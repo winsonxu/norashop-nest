@@ -2,7 +2,7 @@
  * @Author: winsonxu winsonxu@outlook.com
  * @Date: 2022-08-07 22:52:47
  * @LastEditors: winsonxu winsonxu@outlook.com
- * @LastEditTime: 2022-08-13 12:42:16
+ * @LastEditTime: 2022-08-13 14:37:39
  * @Description: 
  * 
  * Copyright (c) 2022 by norait, All Rights Reserved. 
@@ -13,7 +13,7 @@ import { Column, Entity, Index, PrimaryGeneratedColumn } from "typeorm";
 @Index("mall_id", ["mallId"], {})
 @Index("mch_id", ["mchId"], {})
 @Index("username", ["username"], {})
-@Entity("nora_shop_user", { schema: "norait_shop" })
+@Entity("t_user", { schema: "norait_shop" })
 export class UserEntity{
   @PrimaryGeneratedColumn({ type: "int", name: "id", unsigned: true })
   id: number;
