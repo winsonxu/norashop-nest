@@ -20,9 +20,9 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "typeorm:create": "typeorm-ts-node-commonjs migration:create",
-    "typeorm:run": "typeorm-ts-node-commonjs migration:run -d src/database/datasource.ts",
-    "typeorm:gen": "typeorm-ts-node-commonjs migration:generate -d src/database/datasource.ts",
-    "typeorm:rev": "typeorm-ts-node-commonjs migration:revert -d src/database/datasource.ts",
+    "typeorm:run": "typeorm-ts-node-commonjs migration:run -d datasource.ts",
+    "typeorm:gen": "typeorm-ts-node-commonjs migration:generate -d datasource.ts",
+    "typeorm:rev": "typeorm-ts-node-commonjs migration:revert -d datasource.ts",
     "db": "rm -rf entities & npx typeorm-model-generator -h localhost -d norait_shop -p 3306 -u root -x root -e mysql -o entities --noConfig true --ce pascal --cp camel"
   },
   "dependencies": {
@@ -33,6 +33,10 @@
     "@nestjs/passport": "^9.0.0",
     "@nestjs/platform-express": "^9.0.0",
     "@nestjs/typeorm": "^9.0.0",
+    "@nestjsx/crud": "^5.0.0-alpha.3",
+    "@nestjsx/crud-typeorm": "^5.0.0-alpha.3",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.13.2",
     "lodash": "^4.17.21",
     "md5-typescript": "^1.0.5",
     "mysql2": "^2.3.3",

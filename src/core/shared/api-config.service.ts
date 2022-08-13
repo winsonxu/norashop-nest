@@ -8,8 +8,9 @@ import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import type { TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { isNil } from 'lodash';
+import { DataSource } from 'typeorm';
 
-import { SnakeNamingStrategy } from '../../common/snake-naming.strategy';
+import { SnakeNamingStrategy } from '../common/snake-naming.strategy';
 
 @Injectable()
 export class ApiConfigService {
@@ -106,11 +107,40 @@ export class ApiConfigService {
       username: this.getString('DB_USERNAME'),
       password: this.getString('DB_PASSWORD'),
       database: this.getString('DB_DATABASE'),
-      migrationsRun: true,
+      migrationsRun: false,
       logging: this.getBoolean('DB_LOGGING'),
       namingStrategy: new SnakeNamingStrategy(),
     };
   }
+
+  get TypeOrmDatasource(): DataSource{
+    let entities = [
+      __dirname + '/../../modules/**/*.entity{.ts,.js}',
+      __dirname + '/../../modules/**/*.view-entity{.ts,.js}',
+    ];
+    let migrations = [__dirname + '/../../database/migrations/*{.ts,.js}'];
+    const datasource = new DataSource({
+      type: 'mysql',
+      name: 'default',
+      host: this.getString('DB_HOST'),
+      port: this.getNumber('DB_PORT'),
+      username: this.getString('DB_USERNAME'),
+      password: this.getString('DB_PASSWORD'),
+      database: this.getString('DB_DATABASE'),
+      namingStrategy: new SnakeNamingStrategy(),
+      logging: this.getBoolean('DB_LOGGING'),
+      entities: entities,
+      migrations: migrations,
+    })
+    datasource.initialize()
+      .then(() => {
+        console.log('数据源连接成功！');
+      })
+      .catch((err) => {
+        console.error('数据源连接失败！', err);
+      });
+    return datasource;
+  };
 
   get awsS3Config() {
     return {

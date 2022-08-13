@@ -5,7 +5,7 @@
  * @Last Modified time: 2022-08-11 16:44:50 
  */
 import { Global, Module } from '@nestjs/common';
-import { ApiConfigService } from './services/api-config.service';
+import { ApiConfigService } from './api-config.service';
 
 
 const providers = [
