@@ -1,15 +1,16 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, Index } from "typeorm";
+import { BaseEntity } from "./base.entity";
 
 @Index("is_delete", ["isDelete"], {})
 @Index("mall_id", ["mallId"], {})
 @Index("store_id", ["mallId"], {})
 @Entity("t_goods_warehouse", { schema: "norait_shop" })
-export class GoodsWarehouseEntity {
-  @PrimaryGeneratedColumn({ type: "int", name: "id" })
-  id: number;
+export class GoodsWarehouseEntity extends BaseEntity {
+  @Column("bigint", { primary: true, name: "id", unsigned: true })
+  id: string;
 
-  @Column("int", { name: "mall_id" })
-  mallId: number;
+  @Column("bigint", { name: "mall_id" })
+  mallId: string;
 
   @Column("varchar", { name: "name", comment: "商品名称", length: 255 })
   name: string;
@@ -87,6 +88,15 @@ export class GoodsWarehouseEntity {
   })
   type: string;
 
-  @Column("int", { name: "ecard_id", comment: "卡密id", default: () => "'0'" })
-  ecardId: number;
+  @Column("bigint", {
+    name: "ecard_id",
+    comment: "卡密id",
+    default: () => "'0'",
+  })
+  ecardId: string;
+
+  constructor(init?: Partial<GoodsWarehouseEntity>) {
+    super();
+    Object.assign(this, init);
+  }
 }

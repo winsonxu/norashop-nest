@@ -1,13 +1,14 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, Index } from "typeorm";
+import { BaseEntity } from "./base.entity";
 
 @Index("mall_id", ["mallId"], {})
 @Entity("t_wxapp_subscribe", { schema: "norait_shop" })
-export class WxappSubscribeEntity {
-  @PrimaryGeneratedColumn({ type: "int", name: "id", unsigned: true })
-  id: number;
+export class WxappSubscribeEntity extends BaseEntity {
+  @Column("bigint", { primary: true, name: "id", unsigned: true })
+  id: string;
 
-  @Column("int", { name: "mall_id" })
-  mallId: number;
+  @Column("bigint", { name: "mall_id" })
+  mallId: string;
 
   @Column("varchar", { name: "tpl_name", length: 65 })
   tplName: string;
@@ -26,4 +27,9 @@ export class WxappSubscribeEntity {
     default: () => "'0000-00-00 00:00:00'",
   })
   updatedAt: Date;
+
+  constructor(init?: Partial<WxappSubscribeEntity>) {
+    super();
+    Object.assign(this, init);
+  }
 }

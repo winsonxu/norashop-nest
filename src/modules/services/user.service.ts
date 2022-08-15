@@ -1,19 +1,33 @@
+/*
+ * @Author: winsonxu winsonxu@outlook.com
+ * @Date: 2022-08-11 17:34:14
+ * @LastEditors: winsonxu winsonxu@outlook.com
+ * @LastEditTime: 2022-08-15 11:52:13
+ * @Description: 
+ * 
+ * Copyright (c) 2022 by norait, All Rights Reserved. 
+ */
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
+import { CrudRequest } from "@nestjsx/crud";
 import { TypeOrmCrudService } from "@nestjsx/crud-typeorm";
 import { Md5 } from "md5-typescript";
 import { BusinessException } from "src/core/exception/business.exception";
 import { ApiConfigService } from "src/core/shared/api-config.service";
+import { SnowflakeIdGenerate } from "src/core/utils/snowflakeId.generate";
+import { DeepPartial } from "typeorm";
 import { UpdateResult } from "typeorm/query-builder/result/UpdateResult";
 import { Repository } from "typeorm/repository/Repository";
 import { UserEntity } from "../entities/user.entity";
+import { BaseService } from "./base.service";
 /*
  * @Author: 2022-8-11 17:35:07
  * @Date: winsonxu
  * Copyright (c) 2016-2022 norait
  */
 @Injectable()
-export class UserService extends TypeOrmCrudService<UserEntity>{
+export class UserService extends BaseService<UserEntity>{
+
   private userRepository:Repository<UserEntity>
   constructor(@InjectRepository(UserEntity) repo:Repository<UserEntity>,
     private readonly apiConfigService: ApiConfigService){
@@ -26,7 +40,7 @@ export class UserService extends TypeOrmCrudService<UserEntity>{
     return user;
   }
 
-  async getById(id:number): Promise<UserEntity | null>{
+  async getById(id:string): Promise<UserEntity | null>{
     return this.userRepository.findOne({ where : { id } });
   }
 

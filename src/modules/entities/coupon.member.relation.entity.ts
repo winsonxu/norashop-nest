@@ -1,15 +1,15 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column, Entity } from "typeorm";
 
 @Entity("t_coupon_member_relation", { schema: "norait_shop" })
-export class CouponMemberRelationEntity {
-  @PrimaryGeneratedColumn({ type: "int", name: "id" })
-  id: number;
+export class CouponMemberRelationEntity extends BaseEntity {
+  @Column("bigint", { primary: true, name: "id", unsigned: true })
+  id: string;
 
-  @Column("int", { name: "mall_id" })
-  mallId: number;
+  @Column("bigint", { name: "mall_id" })
+  mallId: string;
 
-  @Column("int", { name: "coupon_id", comment: "优惠券id" })
-  couponId: number;
+  @Column("bigint", { name: "coupon_id", comment: "优惠券id" })
+  couponId: string;
 
   @Column("int", { name: "member_level", comment: "会员id" })
   memberLevel: number;
@@ -33,4 +33,9 @@ export class CouponMemberRelationEntity {
     default: () => "'0000-00-00 00:00:00'",
   })
   deletedAt: Date;
+
+  constructor(init?: Partial<CouponMemberRelationEntity>) {
+    super();
+    Object.assign(this, init);
+  }
 }

@@ -1,4 +1,5 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, Index } from "typeorm";
+import { BaseEntity } from "./base.entity";
 
 @Index("coupon_id", ["couponId"], {})
 @Index("is_delete", ["isDelete"], {})
@@ -6,18 +7,18 @@ import { Column, Entity, Index, PrimaryGeneratedColumn } from "typeorm";
 @Index("store_id", ["mallId"], {})
 @Index("user_id", ["userId"], {})
 @Entity("t_user_coupon", { schema: "norait_shop" })
-export class UserCouponEntity {
-  @PrimaryGeneratedColumn({ type: "int", name: "id" })
-  id: number;
+export class UserCouponEntity extends BaseEntity {
+  @Column("bigint", { primary: true, name: "id", unsigned: true })
+  id: string;
 
-  @Column("int", { name: "mall_id" })
-  mallId: number;
+  @Column("bigint", { name: "mall_id" })
+  mallId: string;
 
-  @Column("int", { name: "user_id", comment: "用户" })
-  userId: number;
+  @Column("bigint", { name: "user_id", comment: "用户" })
+  userId: string;
 
-  @Column("int", { name: "coupon_id", comment: "优惠卷" })
-  couponId: number;
+  @Column("bigint", { name: "coupon_id", comment: "优惠卷" })
+  couponId: string;
 
   @Column("decimal", {
     name: "sub_price",
@@ -113,4 +114,9 @@ export class UserCouponEntity {
     scale: 2,
   })
   discountLimit: string | null;
+
+  constructor(init?: Partial<UserCouponEntity>) {
+    super();
+    Object.assign(this, init);
+  }
 }

@@ -1,4 +1,5 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, Index } from "typeorm";
+import { BaseEntity } from "./base.entity";
 
 @Index("cancel_status", ["cancelStatus"], {})
 @Index("clerk_id", ["clerkId"], {})
@@ -23,22 +24,22 @@ import { Column, Entity, Index, PrimaryGeneratedColumn } from "typeorm";
 @Index("token", ["token"], {})
 @Index("user_id", ["userId"], {})
 @Entity("t_order", { schema: "norait_shop" })
-export class OrderEntity {
-  @PrimaryGeneratedColumn({ type: "int", name: "id", unsigned: true })
-  id: number;
+export class OrderEntity extends BaseEntity {
+  @Column("bigint", { primary: true, name: "id", unsigned: true })
+  id: string;
 
-  @Column("int", { name: "mall_id" })
-  mallId: number;
+  @Column("bigint", { name: "mall_id" })
+  mallId: string;
 
-  @Column("int", { name: "user_id" })
-  userId: number;
+  @Column("bigint", { name: "user_id" })
+  userId: string;
 
-  @Column("int", {
+  @Column("bigint", {
     name: "mch_id",
     comment: "多商户id，0表示商城订单",
     default: () => "'0'",
   })
-  mchId: number;
+  mchId: string;
 
   @Column("varchar", { name: "order_no", comment: "订单号", length: 255 })
   orderNo: string;
@@ -108,8 +109,11 @@ export class OrderEntity {
   })
   fullReducePrice: string;
 
-  @Column("int", { name: "use_user_coupon_id", comment: "使用的用户优惠券id" })
-  useUserCouponId: number;
+  @Column("bigint", {
+    name: "use_user_coupon_id",
+    comment: "使用的用户优惠券id",
+  })
+  useUserCouponId: string;
 
   @Column("decimal", {
     name: "coupon_discount_price",
@@ -287,19 +291,19 @@ export class OrderEntity {
   @Column("varchar", { name: "offline_qrcode", comment: "核销码", length: 255 })
   offlineQrcode: string;
 
-  @Column("int", {
+  @Column("bigint", {
     name: "clerk_id",
     comment: "核销员ID",
     default: () => "'0'",
   })
-  clerkId: number;
+  clerkId: string;
 
-  @Column("int", {
+  @Column("bigint", {
     name: "store_id",
     comment: "自提门店ID",
     default: () => "'0'",
   })
-  storeId: number;
+  storeId: string;
 
   @Column("varchar", {
     name: "sign",
@@ -424,4 +428,9 @@ export class OrderEntity {
     default: () => "'0'",
   })
   newStatus: number;
+
+  constructor(init?: Partial<OrderEntity>) {
+    super();
+    Object.assign(this, init);
+  }
 }

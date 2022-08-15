@@ -2,7 +2,7 @@
  * @Author: winsonxu winsonxu@outlook.com
  * @Date: 2022-08-12 14:20:27
  * @LastEditors: winsonxu winsonxu@outlook.com
- * @LastEditTime: 2022-08-13 16:18:04
+ * @LastEditTime: 2022-08-15 12:59:07
  * @Description: 
  * 
  * Copyright (c) 2022 by norait, All Rights Reserved. 
@@ -24,13 +24,18 @@ import { AppController } from "./app/app.controller"
 import { AuthController } from "./auth/auth.controller"
 import { HelloController } from "./hello/hello.controller"
 import { UserController } from "./users/user.controller"
+import { UserCouponAutoController } from "./users/user.coupon.auto.controller"
 
 const controllers = [
   AppController,
   AuthController,
   UserController,
-  HelloController
+  HelloController,
+  UserCouponAutoController
 ]
+// const controllers = [ 
+  
+// ]
 
 @Module({
   imports: [

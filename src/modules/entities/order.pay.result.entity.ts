@@ -1,13 +1,14 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, Index } from "typeorm";
+import { BaseEntity } from "./base.entity";
 
 @Index("order_id", ["orderId"], {})
 @Entity("t_order_pay_result", { schema: "norait_shop" })
-export class OrderPayResultEntity {
-  @PrimaryGeneratedColumn({ type: "int", name: "id" })
-  id: number;
+export class OrderPayResultEntity extends BaseEntity {
+  @Column("bigint", { primary: true, name: "id", unsigned: true })
+  id: string;
 
-  @Column("int", { name: "order_id" })
-  orderId: number;
+  @Column("bigint", { name: "order_id" })
+  orderId: string;
 
   @Column("longtext", { name: "data", nullable: true, comment: "json数据" })
   data: string | null;
@@ -17,4 +18,9 @@ export class OrderPayResultEntity {
 
   @Column("timestamp", { name: "updated_at", nullable: true })
   updatedAt: Date | null;
+
+  constructor(init?: Partial<OrderPayResultEntity>) {
+    super();
+    Object.assign(this, init);
+  }
 }

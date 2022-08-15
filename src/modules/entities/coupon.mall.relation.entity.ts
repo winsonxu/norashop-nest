@@ -1,17 +1,18 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, Index } from "typeorm";
+import { BaseEntity } from "./base.entity";
 
 @Index("mall_id", ["mallId"], {})
 @Index("user_coupon_id", ["userCouponId"], {})
 @Entity("t_coupon_mall_relation", { schema: "norait_shop" })
-export class CouponMallRelationEntity {
-  @PrimaryGeneratedColumn({ type: "int", name: "id" })
-  id: number;
+export class CouponMallRelationEntity extends BaseEntity {
+  @Column("bigint", { primary: true, name: "id", unsigned: true })
+  id: string;
 
-  @Column("int", { name: "mall_id" })
-  mallId: number;
+  @Column("bigint", { name: "mall_id" })
+  mallId: string;
 
-  @Column("int", { name: "user_coupon_id" })
-  userCouponId: number;
+  @Column("bigint", { name: "user_coupon_id" })
+  userCouponId: string;
 
   @Column("tinyint", {
     name: "is_delete",
@@ -21,8 +22,8 @@ export class CouponMallRelationEntity {
   })
   isDelete: boolean;
 
-  @Column("int", { name: "order_id", comment: "订单id" })
-  orderId: number;
+  @Column("bigint", { name: "order_id", comment: "订单id" })
+  orderId: string;
 
   @Column("varchar", {
     name: "type",
@@ -30,4 +31,9 @@ export class CouponMallRelationEntity {
     length: 20,
   })
   type: string;
+
+  constructor(init?: Partial<CouponMallRelationEntity>) {
+    super();
+    Object.assign(this, init);
+  }
 }

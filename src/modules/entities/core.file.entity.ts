@@ -1,15 +1,15 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column, Entity } from "typeorm";
 
 @Entity("t_core_file", { schema: "norait_shop" })
-export class CoreFileEntity {
-  @PrimaryGeneratedColumn({ type: "int", name: "id" })
-  id: number;
+export class CoreFileEntity extends BaseEntity {
+  @Column("bigint", { primary: true, name: "id", unsigned: true })
+  id: string;
 
-  @Column("int", { name: "mall_id", nullable: true, default: () => "'0'" })
-  mallId: number | null;
+  @Column("bigint", { name: "mall_id", nullable: true, default: () => "'0'" })
+  mallId: string | null;
 
-  @Column("int", { name: "mch_id", nullable: true, default: () => "'0'" })
-  mchId: number | null;
+  @Column("bigint", { name: "mch_id", nullable: true, default: () => "'0'" })
+  mchId: string | null;
 
   @Column("varchar", {
     name: "file_name",
@@ -55,6 +55,11 @@ export class CoreFileEntity {
   @Column("timestamp", { name: "deleted_at", nullable: true })
   deletedAt: Date | null;
 
-  @Column("int", { name: "user_id", nullable: true, comment: "用户ID" })
-  userId: number | null;
+  @Column("bigint", { name: "user_id", nullable: true, comment: "用户ID" })
+  userId: string | null;
+
+  constructor(init?: Partial<CoreFileEntity>) {
+    super();
+    Object.assign(this, init);
+  }
 }

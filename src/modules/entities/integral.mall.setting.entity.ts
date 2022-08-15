@@ -1,12 +1,12 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column, Entity } from "typeorm";
 
 @Entity("t_integral_mall_setting", { schema: "norait_shop" })
-export class IntegralMallSettingEntity {
-  @PrimaryGeneratedColumn({ type: "int", name: "id", unsigned: true })
-  id: number;
+export class IntegralMallSettingEntity extends BaseEntity {
+  @Column("bigint", { primary: true, name: "id", unsigned: true })
+  id: string;
 
-  @Column("int", { name: "mall_id" })
-  mallId: number;
+  @Column("bigint", { name: "mall_id" })
+  mallId: string;
 
   @Column("int", { name: "is_share", default: () => "'0'" })
   isShare: number;
@@ -46,4 +46,9 @@ export class IntegralMallSettingEntity {
 
   @Column("longtext", { name: "goods_poster", comment: "自定义海报" })
   goodsPoster: string;
+
+  constructor(init?: Partial<IntegralMallSettingEntity>) {
+    super();
+    Object.assign(this, init);
+  }
 }

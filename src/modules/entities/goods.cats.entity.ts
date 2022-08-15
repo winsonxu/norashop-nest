@@ -1,22 +1,27 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, Index } from "typeorm";
+import { BaseEntity } from "./base.entity";
 
 @Index("index1", ["mallId", "mchId", "status", "isDelete", "isShow"], {})
 @Index("mall_id", ["mallId"], {})
 @Index("mch_id", ["mchId"], {})
 @Index("parent_id", ["parentId"], {})
 @Entity("t_goods_cats", { schema: "norait_shop" })
-export class GoodsCatsEntity {
-  @PrimaryGeneratedColumn({ type: "int", name: "id", unsigned: true })
-  id: number;
+export class GoodsCatsEntity extends BaseEntity {
+  @Column("bigint", { primary: true, name: "id", unsigned: true })
+  id: string;
 
-  @Column("int", { name: "mall_id" })
-  mallId: number;
+  @Column("bigint", { name: "mall_id" })
+  mallId: string;
 
-  @Column("int", { name: "mch_id", default: () => "'0'" })
-  mchId: number;
+  @Column("bigint", { name: "mch_id", default: () => "'0'" })
+  mchId: string;
 
-  @Column("int", { name: "parent_id", comment: "父级ID", default: () => "'0'" })
-  parentId: number;
+  @Column("bigint", {
+    name: "parent_id",
+    comment: "父级ID",
+    default: () => "'0'",
+  })
+  parentId: string;
 
   @Column("varchar", { name: "name", comment: "分类名称", length: 45 })
   name: string;
@@ -89,4 +94,9 @@ export class GoodsCatsEntity {
 
   @Column("longtext", { name: "link", nullable: true, comment: "链接详情" })
   link: string | null;
+
+  constructor(init?: Partial<GoodsCatsEntity>) {
+    super();
+    Object.assign(this, init);
+  }
 }

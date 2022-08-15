@@ -1,18 +1,24 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, Index } from "typeorm";
+import { BaseEntity } from "./base.entity";
 
 @Index("cat_id", ["catId"], {})
 @Index("goods_warehouse_id", ["goodsWarehouseId"], {})
 @Entity("t_goods_cat_relation", { schema: "norait_shop" })
-export class GoodsCatRelationEntity {
-  @PrimaryGeneratedColumn({ type: "int", name: "id", unsigned: true })
-  id: number;
+export class GoodsCatRelationEntity extends BaseEntity {
+  @Column("bigint", { primary: true, name: "id", unsigned: true })
+  id: string;
 
-  @Column("int", { name: "goods_warehouse_id" })
-  goodsWarehouseId: number;
+  @Column("bigint", { name: "goods_warehouse_id" })
+  goodsWarehouseId: string;
 
-  @Column("int", { name: "cat_id" })
-  catId: number;
+  @Column("bigint", { name: "cat_id" })
+  catId: string;
 
   @Column("tinyint", { name: "is_delete", width: 1, default: () => "'0'" })
   isDelete: boolean;
+
+  constructor(init?: Partial<GoodsCatRelationEntity>) {
+    super();
+    Object.assign(this, init);
+  }
 }

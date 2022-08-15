@@ -1,14 +1,15 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, Index } from "typeorm";
+import { BaseEntity } from "./base.entity";
 
 @Index("is_delete", ["isDelete"], {})
 @Index("store_id", ["mallId"], {})
 @Entity("t_coupon", { schema: "norait_shop" })
-export class CouponEntity {
-  @PrimaryGeneratedColumn({ type: "int", name: "id" })
-  id: number;
+export class CouponEntity extends BaseEntity {
+  @Column("bigint", { primary: true, name: "id", unsigned: true })
+  id: string;
 
-  @Column("int", { name: "mall_id" })
-  mallId: number;
+  @Column("bigint", { name: "mall_id" })
+  mallId: string;
 
   @Column("varchar", { name: "name", comment: "优惠券名称", length: 255 })
   name: string;
@@ -160,4 +161,9 @@ export class CouponEntity {
     default: () => "'0'",
   })
   useObtain: boolean;
+
+  constructor(init?: Partial<CouponEntity>) {
+    super();
+    Object.assign(this, init);
+  }
 }

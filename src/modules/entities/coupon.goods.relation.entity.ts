@@ -1,15 +1,15 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column, Entity } from "typeorm";
 
 @Entity("t_coupon_goods_relation", { schema: "norait_shop" })
-export class CouponGoodsRelationEntity {
-  @PrimaryGeneratedColumn({ type: "int", name: "id" })
-  id: number;
+export class CouponGoodsRelationEntity extends BaseEntity {
+  @Column("bigint", { primary: true, name: "id", unsigned: true })
+  id: string;
 
-  @Column("int", { name: "coupon_id", comment: "优惠券" })
-  couponId: number;
+  @Column("bigint", { name: "coupon_id", comment: "优惠券" })
+  couponId: string;
 
-  @Column("int", { name: "goods_warehouse_id", comment: "商品" })
-  goodsWarehouseId: number;
+  @Column("bigint", { name: "goods_warehouse_id", comment: "商品" })
+  goodsWarehouseId: string;
 
   @Column("tinyint", {
     name: "is_delete",
@@ -18,4 +18,9 @@ export class CouponGoodsRelationEntity {
     default: () => "'0'",
   })
   isDelete: boolean;
+
+  constructor(init?: Partial<CouponGoodsRelationEntity>) {
+    super();
+    Object.assign(this, init);
+  }
 }

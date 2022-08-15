@@ -1,18 +1,18 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column, Entity } from "typeorm";
 
 @Entity("t_goods_card_clerk_log", { schema: "norait_shop" })
-export class GoodsCardClerkLogEntity {
-  @PrimaryGeneratedColumn({ type: "int", name: "id", unsigned: true })
-  id: number;
+export class GoodsCardClerkLogEntity extends BaseEntity {
+  @Column("bigint", { primary: true, name: "id", unsigned: true })
+  id: string;
 
-  @Column("int", { name: "user_card_id", comment: "用户卡券ID" })
-  userCardId: number;
+  @Column("bigint", { name: "user_card_id", comment: "用户卡券ID" })
+  userCardId: string;
 
-  @Column("int", { name: "clerk_id", comment: "核销员ID" })
-  clerkId: number;
+  @Column("bigint", { name: "clerk_id", comment: "核销员ID" })
+  clerkId: string;
 
-  @Column("int", { name: "store_id", comment: "核销门店ID" })
-  storeId: number;
+  @Column("bigint", { name: "store_id", comment: "核销门店ID" })
+  storeId: string;
 
   @Column("int", { name: "use_number", comment: "核销次数" })
   useNumber: number;
@@ -26,4 +26,9 @@ export class GoodsCardClerkLogEntity {
     default: () => "CURRENT_TIMESTAMP",
   })
   clerkedAt: Date;
+
+  constructor(init?: Partial<GoodsCardClerkLogEntity>) {
+    super();
+    Object.assign(this, init);
+  }
 }

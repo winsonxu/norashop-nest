@@ -1,15 +1,15 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column, Entity } from "typeorm";
 
 @Entity("t_user_coupon_member", { schema: "norait_shop" })
-export class UserCouponMemberEntity {
-  @PrimaryGeneratedColumn({ type: "int", name: "id" })
-  id: number;
+export class UserCouponMemberEntity extends BaseEntity {
+  @Column("bigint", { primary: true, name: "id", unsigned: true })
+  id: string;
 
-  @Column("int", { name: "mall_id" })
-  mallId: number;
+  @Column("bigint", { name: "mall_id" })
+  mallId: string;
 
-  @Column("int", { name: "user_id" })
-  userId: number;
+  @Column("bigint", { name: "user_id" })
+  userId: string;
 
   @Column("int", {
     name: "member_level",
@@ -18,9 +18,14 @@ export class UserCouponMemberEntity {
   })
   memberLevel: number;
 
-  @Column("int", { name: "user_coupon_id" })
-  userCouponId: number;
+  @Column("bigint", { name: "user_coupon_id" })
+  userCouponId: string;
 
   @Column("int", { name: "is_delete" })
   isDelete: number;
+
+  constructor(init?: Partial<UserCouponMemberEntity>) {
+    super();
+    Object.assign(this, init);
+  }
 }

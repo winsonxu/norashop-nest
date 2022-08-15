@@ -1,4 +1,5 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, Index } from "typeorm";
+import { BaseEntity } from "./base.entity";
 
 @Index("is_delete", ["isDelete"], {})
 @Index("mall_id", ["mallId"], {})
@@ -6,21 +7,25 @@ import { Column, Entity, Index, PrimaryGeneratedColumn } from "typeorm";
 @Index("status", ["status"], {})
 @Index("store_id", ["storeId"], {})
 @Entity("t_printer_setting", { schema: "norait_shop" })
-export class PrinterSettingEntity {
-  @PrimaryGeneratedColumn({ type: "int", name: "id" })
-  id: number;
+export class PrinterSettingEntity extends BaseEntity {
+  @Column("bigint", { primary: true, name: "id", unsigned: true })
+  id: string;
 
-  @Column("int", { name: "mall_id" })
-  mallId: number;
+  @Column("bigint", { name: "mall_id" })
+  mallId: string;
 
-  @Column("int", { name: "mch_id", default: () => "'0'" })
-  mchId: number;
+  @Column("bigint", { name: "mch_id", default: () => "'0'" })
+  mchId: string;
 
-  @Column("int", { name: "printer_id", comment: "打印机id" })
-  printerId: number;
+  @Column("bigint", { name: "printer_id", comment: "打印机id" })
+  printerId: string;
 
-  @Column("int", { name: "block_id", comment: "模板id", default: () => "'0'" })
-  blockId: number;
+  @Column("bigint", {
+    name: "block_id",
+    comment: "模板id",
+    default: () => "'0'",
+  })
+  blockId: string;
 
   @Column("tinyint", {
     name: "status",
@@ -83,6 +88,11 @@ export class PrinterSettingEntity {
   @Column("varchar", { name: "order_send_type", length: 255 })
   orderSendType: string;
 
-  @Column("int", { name: "store_id", default: () => "'0'" })
-  storeId: number;
+  @Column("bigint", { name: "store_id", default: () => "'0'" })
+  storeId: string;
+
+  constructor(init?: Partial<PrinterSettingEntity>) {
+    super();
+    Object.assign(this, init);
+  }
 }

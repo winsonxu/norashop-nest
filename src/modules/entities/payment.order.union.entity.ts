@@ -1,4 +1,5 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, Index } from "typeorm";
+import { BaseEntity } from "./base.entity";
 
 @Index("is_pay", ["isPay"], {})
 @Index("mall_id", ["mallId"], {})
@@ -6,15 +7,15 @@ import { Column, Entity, Index, PrimaryGeneratedColumn } from "typeorm";
 @Index("pay_type", ["payType"], {})
 @Index("user_id", ["userId"], {})
 @Entity("t_payment_order_union", { schema: "norait_shop" })
-export class PaymentOrderUnionEntity {
-  @PrimaryGeneratedColumn({ type: "int", name: "id" })
-  id: number;
+export class PaymentOrderUnionEntity extends BaseEntity {
+  @Column("bigint", { primary: true, name: "id", unsigned: true })
+  id: string;
 
-  @Column("int", { name: "mall_id" })
-  mallId: number;
+  @Column("bigint", { name: "mall_id" })
+  mallId: string;
 
-  @Column("int", { name: "user_id", default: () => "'0'" })
-  userId: number;
+  @Column("bigint", { name: "user_id", default: () => "'0'" })
+  userId: string;
 
   @Column("varchar", { name: "order_no", length: 32 })
   orderNo: string;
@@ -61,4 +62,9 @@ export class PaymentOrderUnionEntity {
 
   @Column("varchar", { name: "platform", length: 32 })
   platform: string;
+
+  constructor(init?: Partial<PaymentOrderUnionEntity>) {
+    super();
+    Object.assign(this, init);
+  }
 }

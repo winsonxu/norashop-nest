@@ -2,7 +2,7 @@
  * @Author: winsonxu winsonxu@outlook.com
  * @Date: 2022-08-07 21:10:19
  * @LastEditors: winsonxu winsonxu@outlook.com
- * @LastEditTime: 2022-08-13 16:31:38
+ * @LastEditTime: 2022-08-15 11:22:56
  * @Description: 
  * 
  * Copyright (c) 2022 by norait, All Rights Reserved. 
@@ -11,6 +11,7 @@ import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { User } from 'src/core/decorator/user.decorator';
 import { ApiConfigService } from 'src/core/shared/api-config.service';
 import { UserEntity } from 'src/modules/entities/user.entity';
+import { FindOptionsWhere } from 'typeorm';
 import { UserService } from '../../services/user.service';
 
 @Controller('mobile/user')
@@ -29,10 +30,11 @@ export class UserController {
   }
   
   @Get(':id')
-  async getUserById(@Param('id') id:number) : Promise<UserEntity | null>{
+  async getUserById(@Param('id') id:string) : Promise<UserEntity | null>{
     console.log(id);
     const manager =  this.apiConfigService.TypeOrmDatasource.manager.getRepository(UserEntity)
-    const user = await manager.findOne({ where : {id: id } });
+    const where:FindOptionsWhere<UserEntity> = { id }
+    const user = await manager.findOne({ where });
     return user;
   }
 

@@ -1,22 +1,23 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, Index } from "typeorm";
+import { BaseEntity } from "./base.entity";
 
 @Index("store_id", ["mallId"], {})
 @Entity("t_core_action_log", { schema: "norait_shop" })
-export class CoreActionLogEntity {
-  @PrimaryGeneratedColumn({ type: "int", name: "id", unsigned: true })
-  id: number;
+export class CoreActionLogEntity extends BaseEntity {
+  @Column("bigint", { primary: true, name: "id", unsigned: true })
+  id: string;
 
-  @Column("int", { name: "mall_id" })
-  mallId: number;
+  @Column("bigint", { name: "mall_id" })
+  mallId: string;
 
-  @Column("int", { name: "user_id", comment: "操作人ID" })
-  userId: number;
+  @Column("bigint", { name: "user_id", comment: "操作人ID" })
+  userId: string;
 
   @Column("varchar", { name: "model", comment: "模型名称", length: 255 })
   model: string;
 
-  @Column("int", { name: "model_id", comment: "模模型ID" })
-  modelId: number;
+  @Column("bigint", { name: "model_id", comment: "模模型ID" })
+  modelId: string;
 
   @Column("longtext", { name: "before_update", nullable: true })
   beforeUpdate: string | null;
@@ -36,4 +37,9 @@ export class CoreActionLogEntity {
 
   @Column("varchar", { name: "remark", length: 255 })
   remark: string;
+
+  constructor(init?: Partial<CoreActionLogEntity>) {
+    super();
+    Object.assign(this, init);
+  }
 }

@@ -1,14 +1,15 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, Index } from "typeorm";
+import { BaseEntity } from "./base.entity";
 
 @Index("key", ["key"], {})
 @Index("mall_id", ["mallId"], {})
 @Entity("t_mall_setting", { schema: "norait_shop" })
-export class MallSettingEntity {
-  @PrimaryGeneratedColumn({ type: "int", name: "id", unsigned: true })
-  id: number;
+export class MallSettingEntity extends BaseEntity {
+  @Column("bigint", { primary: true, name: "id", unsigned: true })
+  id: string;
 
-  @Column("int", { name: "mall_id" })
-  mallId: number;
+  @Column("bigint", { name: "mall_id" })
+  mallId: string;
 
   @Column("varchar", { name: "key", length: 65 })
   key: string;
@@ -18,4 +19,9 @@ export class MallSettingEntity {
 
   @Column("tinyint", { name: "is_delete", width: 1, default: () => "'0'" })
   isDelete: boolean;
+
+  constructor(init?: Partial<MallSettingEntity>) {
+    super();
+    Object.assign(this, init);
+  }
 }

@@ -1,15 +1,15 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column, Entity } from "typeorm";
 
 @Entity("t_mall", { schema: "norait_shop" })
-export class MallEntity {
-  @PrimaryGeneratedColumn({ type: "int", name: "id", unsigned: true })
-  id: number;
+export class MallEntity extends BaseEntity {
+  @Column("bigint", { primary: true, name: "id", unsigned: true })
+  id: string;
 
   @Column("varchar", { name: "name", length: 64 })
   name: string;
 
-  @Column("int", { name: "user_id", unsigned: true })
-  userId: number;
+  @Column("bigint", { name: "user_id", unsigned: true })
+  userId: string;
 
   @Column("timestamp", {
     name: "created_at",
@@ -53,4 +53,9 @@ export class MallEntity {
     default: () => "'0000-00-00 00:00:00'",
   })
   expiredAt: Date;
+
+  constructor(init?: Partial<MallEntity>) {
+    super();
+    Object.assign(this, init);
+  }
 }

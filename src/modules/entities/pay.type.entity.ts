@@ -1,12 +1,12 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column, Entity } from "typeorm";
 
 @Entity("t_pay_type", { schema: "norait_shop" })
-export class PayTypeEntity {
-  @PrimaryGeneratedColumn({ type: "int", name: "id", unsigned: true })
-  id: number;
+export class PayTypeEntity extends BaseEntity {
+  @Column("bigint", { primary: true, name: "id", unsigned: true })
+  id: string;
 
-  @Column("int", { name: "mall_id" })
-  mallId: number;
+  @Column("bigint", { name: "mall_id" })
+  mallId: string;
 
   @Column("varchar", { name: "name", comment: "支付名称", length: 255 })
   name: string;
@@ -119,4 +119,9 @@ export class PayTypeEntity {
     default: () => "'0000-00-00 00:00:00'",
   })
   deletedAt: Date;
+
+  constructor(init?: Partial<PayTypeEntity>) {
+    super();
+    Object.assign(this, init);
+  }
 }

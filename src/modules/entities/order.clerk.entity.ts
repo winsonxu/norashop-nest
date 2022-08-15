@@ -1,9 +1,9 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column, Entity } from "typeorm";
 
 @Entity("t_order_clerk", { schema: "norait_shop" })
-export class OrderClerkEntity {
-  @PrimaryGeneratedColumn({ type: "int", name: "id", unsigned: true })
-  id: number;
+export class OrderClerkEntity extends BaseEntity {
+  @Column("bigint", { primary: true, name: "id", unsigned: true })
+  id: string;
 
   @Column("tinyint", {
     name: "affirm_pay_type",
@@ -24,11 +24,11 @@ export class OrderClerkEntity {
   @Column("varchar", { name: "clerk_remark", comment: "核销备注", length: 255 })
   clerkRemark: string;
 
-  @Column("int", { name: "mall_id" })
-  mallId: number;
+  @Column("bigint", { name: "mall_id" })
+  mallId: string;
 
-  @Column("int", { name: "order_id" })
-  orderId: number;
+  @Column("bigint", { name: "order_id" })
+  orderId: string;
 
   @Column("timestamp", {
     name: "created_at",
@@ -50,4 +50,9 @@ export class OrderClerkEntity {
 
   @Column("tinyint", { name: "is_delete", default: () => "'0'" })
   isDelete: number;
+
+  constructor(init?: Partial<OrderClerkEntity>) {
+    super();
+    Object.assign(this, init);
+  }
 }

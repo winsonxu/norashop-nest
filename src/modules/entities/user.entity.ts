@@ -1,28 +1,24 @@
-/*
- * @Author: winsonxu winsonxu@outlook.com
- * @Date: 2022-08-07 22:52:47
- * @LastEditors: winsonxu winsonxu@outlook.com
- * @LastEditTime: 2022-08-13 14:37:39
- * @Description: 
- * 
- * Copyright (c) 2022 by norait, All Rights Reserved. 
- */
-import { Column, Entity, Index, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, Index } from "typeorm";
+import { BaseEntity } from "./base.entity";
 
 @Index("access_token", ["accessToken"], {})
 @Index("mall_id", ["mallId"], {})
 @Index("mch_id", ["mchId"], {})
 @Index("username", ["username"], {})
 @Entity("t_user", { schema: "norait_shop" })
-export class UserEntity{
-  @PrimaryGeneratedColumn({ type: "int", name: "id", unsigned: true })
-  id: number;
+export class UserEntity extends BaseEntity {
+  @Column("bigint", { primary: true, name: "id", unsigned: true })
+  id: string;
 
-  @Column("int", { name: "mall_id" })
-  mallId: number;
+  @Column("bigint", { name: "mall_id" })
+  mallId: string;
 
-  @Column("int", { name: "mch_id", comment: "多商户ID", default: () => "'0'" })
-  mchId: number;
+  @Column("bigint", {
+    name: "mch_id",
+    comment: "多商户ID",
+    default: () => "'0'",
+  })
+  mchId: string;
 
   @Column("varchar", { name: "username", length: 64 })
   username: string;
@@ -57,14 +53,17 @@ export class UserEntity{
   })
   updatedAt: Date;
 
-  @Column("timestamp", {
-    name: "deleted_at"
-  })
-  deletedAt: Date;
+  @Column("timestamp", { name: "deleted_at", nullable: true })
+  deletedAt: Date | null;
 
   @Column("tinyint", { name: "is_delete", width: 1, default: () => "'0'" })
   isDelete: boolean;
 
-  @Column("json", { name: "menu", default: () => {} })
+  @Column("json", { name: "menu", comment: "菜单权限" })
   menu: object;
+
+  constructor(init?: Partial<UserEntity>) {
+    super();
+    Object.assign(this, init);
+  }
 }

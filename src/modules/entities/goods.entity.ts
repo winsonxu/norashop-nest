@@ -1,4 +1,5 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, Index } from "typeorm";
+import { BaseEntity } from "./base.entity";
 
 @Index("created_at", ["createdAt"], {})
 @Index("goods_warehouse_id", ["goodsWarehouseId"], {})
@@ -15,18 +16,18 @@ import { Column, Entity, Index, PrimaryGeneratedColumn } from "typeorm";
 @Index("sort", ["sort"], {})
 @Index("status", ["status"], {})
 @Entity("t_goods", { schema: "norait_shop" })
-export class GoodsEntity {
-  @PrimaryGeneratedColumn({ type: "int", name: "id" })
-  id: number;
+export class GoodsEntity extends BaseEntity {
+  @Column("bigint", { primary: true, name: "id", unsigned: true })
+  id: string;
 
-  @Column("int", { name: "mall_id" })
-  mallId: number;
+  @Column("bigint", { name: "mall_id" })
+  mallId: string;
 
-  @Column("int", { name: "mch_id", default: () => "'0'" })
-  mchId: number;
+  @Column("bigint", { name: "mch_id", default: () => "'0'" })
+  mchId: string;
 
-  @Column("int", { name: "goods_warehouse_id" })
-  goodsWarehouseId: number;
+  @Column("bigint", { name: "goods_warehouse_id" })
+  goodsWarehouseId: string;
 
   @Column("smallint", {
     name: "status",
@@ -91,15 +92,15 @@ export class GoodsEntity {
   })
   forehead: string;
 
-  @Column("int", {
+  @Column("bigint", {
     name: "shipping_id",
     comment: "包邮模板ID",
     default: () => "'0'",
   })
-  shippingId: number;
+  shippingId: string;
 
-  @Column("int", { name: "freight_id", comment: "运费模板ID" })
-  freightId: number;
+  @Column("bigint", { name: "freight_id", comment: "运费模板ID" })
+  freightId: string;
 
   @Column("int", {
     name: "give_integral",
@@ -298,12 +299,12 @@ export class GoodsEntity {
   })
   areaLimit: string | null;
 
-  @Column("int", {
+  @Column("bigint", {
     name: "form_id",
     comment: "自定义表单id 0--表示默认表单 -1--表示不使用表单",
     default: () => "'0'",
   })
-  formId: number;
+  formId: string;
 
   @Column("int", {
     name: "sales",
@@ -448,4 +449,9 @@ export class GoodsEntity {
     default: () => "'1'",
   })
   isShare: boolean;
+
+  constructor(init?: Partial<GoodsEntity>) {
+    super();
+    Object.assign(this, init);
+  }
 }

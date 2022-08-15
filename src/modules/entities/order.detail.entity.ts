@@ -1,18 +1,19 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, Index } from "typeorm";
+import { BaseEntity } from "./base.entity";
 
 @Index("created_at", ["createdAt"], {})
 @Index("index1", ["orderId", "goodsId", "isRefund"], {})
 @Index("order_id", ["orderId"], {})
 @Entity("t_order_detail", { schema: "norait_shop" })
-export class OrderDetailEntity {
-  @PrimaryGeneratedColumn({ type: "int", name: "id", unsigned: true })
-  id: number;
+export class OrderDetailEntity extends BaseEntity {
+  @Column("bigint", { primary: true, name: "id", unsigned: true })
+  id: string;
 
-  @Column("int", { name: "order_id" })
-  orderId: number;
+  @Column("bigint", { name: "order_id" })
+  orderId: string;
 
-  @Column("int", { name: "goods_id" })
-  goodsId: number;
+  @Column("bigint", { name: "goods_id" })
+  goodsId: string;
 
   @Column("int", { name: "num", comment: "购买商品数量" })
   num: number;
@@ -124,13 +125,13 @@ export class OrderDetailEntity {
   })
   formData: string | null;
 
-  @Column("int", {
+  @Column("bigint", {
     name: "form_id",
     nullable: true,
     comment: "自定义表单的id",
     default: () => "'0'",
   })
-  formId: number | null;
+  formId: string | null;
 
   @Column("varchar", {
     name: "goods_type",
@@ -139,4 +140,9 @@ export class OrderDetailEntity {
     default: () => "'goods'",
   })
   goodsType: string;
+
+  constructor(init?: Partial<OrderDetailEntity>) {
+    super();
+    Object.assign(this, init);
+  }
 }

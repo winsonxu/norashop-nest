@@ -1,16 +1,17 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, Index } from "typeorm";
+import { BaseEntity } from "./base.entity";
 
 @Index("parent_id", ["parentId"], {})
 @Index("platform_user_id", ["platformUserId"], {})
 @Index("temp_parent_id", ["tempParentId"], {})
 @Index("user_id", ["userId"], {})
 @Entity("t_user_info", { schema: "norait_shop" })
-export class UserInfoEntity {
-  @PrimaryGeneratedColumn({ type: "int", name: "id", unsigned: true })
-  id: number;
+export class UserInfoEntity extends BaseEntity {
+  @Column("bigint", { primary: true, name: "id", unsigned: true })
+  id: string;
 
-  @Column("int", { name: "user_id" })
-  userId: number;
+  @Column("bigint", { name: "user_id" })
+  userId: string;
 
   @Column("varchar", { name: "avatar", comment: "头像", length: 255 })
   avatar: string;
@@ -50,8 +51,12 @@ export class UserInfoEntity {
   })
   totalBalance: string;
 
-  @Column("int", { name: "parent_id", comment: "上级id", default: () => "'0'" })
-  parentId: number;
+  @Column("bigint", {
+    name: "parent_id",
+    comment: "上级id",
+    default: () => "'0'",
+  })
+  parentId: string;
 
   @Column("tinyint", {
     name: "is_blacklist",
@@ -84,16 +89,21 @@ export class UserInfoEntity {
   })
   platform: string;
 
-  @Column("int", {
+  @Column("bigint", {
     name: "temp_parent_id",
     comment: "临时上级",
     default: () => "'0'",
   })
-  tempParentId: number;
+  tempParentId: string;
 
   @Column("varchar", { name: "remark_name", comment: "备注名", length: 60 })
   remarkName: string;
 
   @Column("varchar", { name: "pay_password", comment: "支付密码", length: 255 })
   payPassword: string;
+
+  constructor(init?: Partial<UserInfoEntity>) {
+    super();
+    Object.assign(this, init);
+  }
 }

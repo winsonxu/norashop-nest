@@ -1,12 +1,12 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column, Entity } from "typeorm";
 
 @Entity("t_core_exception_log", { schema: "norait_shop" })
-export class CoreExceptionLogEntity {
-  @PrimaryGeneratedColumn({ type: "int", name: "id", unsigned: true })
-  id: number;
+export class CoreExceptionLogEntity extends BaseEntity {
+  @Column("bigint", { primary: true, name: "id", unsigned: true })
+  id: string;
 
-  @Column("int", { name: "mall_id" })
-  mallId: number;
+  @Column("bigint", { name: "mall_id" })
+  mallId: string;
 
   @Column("tinyint", {
     name: "level",
@@ -29,4 +29,9 @@ export class CoreExceptionLogEntity {
 
   @Column("tinyint", { name: "is_delete", width: 1, default: () => "'0'" })
   isDelete: boolean;
+
+  constructor(init?: Partial<CoreExceptionLogEntity>) {
+    super();
+    Object.assign(this, init);
+  }
 }

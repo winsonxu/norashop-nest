@@ -110,6 +110,8 @@ export class ApiConfigService {
       migrationsRun: false,
       logging: this.getBoolean('DB_LOGGING'),
       namingStrategy: new SnakeNamingStrategy(),
+      supportBigNumbers:true, // 数据库支持bigint或decimal类型列时，需要设此option为true (默认：false)
+      bigNumberStrings:true, //supportBigNumbers和bigNumberStrings启用 强制bigint或decimal列以JavaScript字符串类型返回(默认：false)
     };
   }
 
@@ -131,6 +133,8 @@ export class ApiConfigService {
       logging: this.getBoolean('DB_LOGGING'),
       entities: entities,
       migrations: migrations,
+      supportBigNumbers:true, // 数据库支持bigint或decimal类型列时，需要设此option为true (默认：false)
+      bigNumberStrings:true, //supportBigNumbers和bigNumberStrings启用 强制bigint或decimal列以JavaScript字符串类型返回(默认：false)
     })
     datasource.initialize()
       .then(() => {

@@ -1,18 +1,18 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column, Entity } from "typeorm";
 
 @Entity("t_clerk_user", { schema: "norait_shop" })
-export class ClerkUserEntity {
-  @PrimaryGeneratedColumn({ type: "int", name: "id", unsigned: true })
-  id: number;
+export class ClerkUserEntity extends BaseEntity {
+  @Column("bigint", { primary: true, name: "id", unsigned: true })
+  id: string;
 
-  @Column("int", { name: "user_id" })
-  userId: number;
+  @Column("bigint", { name: "user_id" })
+  userId: string;
 
-  @Column("int", { name: "mall_id" })
-  mallId: number;
+  @Column("bigint", { name: "mall_id" })
+  mallId: string;
 
-  @Column("int", { name: "mch_id", default: () => "'0'" })
-  mchId: number;
+  @Column("bigint", { name: "mch_id", default: () => "'0'" })
+  mchId: string;
 
   @Column("timestamp", {
     name: "created_at",
@@ -34,4 +34,9 @@ export class ClerkUserEntity {
 
   @Column("tinyint", { name: "is_delete", width: 1, default: () => "'0'" })
   isDelete: boolean;
+
+  constructor(init?: Partial<ClerkUserEntity>) {
+    super();
+    Object.assign(this, init);
+  }
 }

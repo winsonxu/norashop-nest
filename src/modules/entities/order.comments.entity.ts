@@ -1,25 +1,26 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, Index } from "typeorm";
+import { BaseEntity } from "./base.entity";
 
 @Index("order_id", ["orderId"], {})
 @Entity("t_order_comments", { schema: "norait_shop" })
-export class OrderCommentsEntity {
-  @PrimaryGeneratedColumn({ type: "int", name: "id" })
-  id: number;
+export class OrderCommentsEntity extends BaseEntity {
+  @Column("bigint", { primary: true, name: "id", unsigned: true })
+  id: string;
 
-  @Column("int", { name: "mall_id" })
-  mallId: number;
+  @Column("bigint", { name: "mall_id" })
+  mallId: string;
 
-  @Column("int", { name: "mch_id", default: () => "'0'" })
-  mchId: number;
+  @Column("bigint", { name: "mch_id", default: () => "'0'" })
+  mchId: string;
 
-  @Column("int", { name: "order_id" })
-  orderId: number;
+  @Column("bigint", { name: "order_id" })
+  orderId: string;
 
-  @Column("int", { name: "order_detail_id" })
-  orderDetailId: number;
+  @Column("bigint", { name: "order_detail_id" })
+  orderDetailId: string;
 
-  @Column("int", { name: "user_id" })
-  userId: number;
+  @Column("bigint", { name: "user_id" })
+  userId: string;
 
   @Column("tinyint", { name: "score", comment: "评分：1=差评，2=中评，3=好" })
   score: number;
@@ -67,11 +68,15 @@ export class OrderCommentsEntity {
   })
   virtualTime: Date;
 
-  @Column("int", { name: "goods_id", comment: "商品ID", default: () => "'0'" })
-  goodsId: number;
+  @Column("bigint", {
+    name: "goods_id",
+    comment: "商品ID",
+    default: () => "'0'",
+  })
+  goodsId: string;
 
-  @Column("int", { name: "goods_warehouse_id", comment: "商品库ID" })
-  goodsWarehouseId: number;
+  @Column("bigint", { name: "goods_warehouse_id", comment: "商品库ID" })
+  goodsWarehouseId: string;
 
   @Column("varchar", { name: "sign", length: 255 })
   sign: string;
@@ -123,6 +128,11 @@ export class OrderCommentsEntity {
   })
   goodsInfo: string | null;
 
-  @Column("int", { name: "attr_id", comment: "规格", default: () => "'0'" })
-  attrId: number;
+  @Column("bigint", { name: "attr_id", comment: "规格", default: () => "'0'" })
+  attrId: string;
+
+  constructor(init?: Partial<OrderCommentsEntity>) {
+    super();
+    Object.assign(this, init);
+  }
 }

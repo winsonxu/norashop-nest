@@ -1,28 +1,37 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, Index } from "typeorm";
+import { BaseEntity } from "./base.entity";
 
 @Index("mall_id", ["mallId"], {})
 @Index("user_coupon_id", ["userCouponId"], {})
 @Index("user_id", ["userId"], {})
 @Entity("t_user_coupon_goods", { schema: "norait_shop" })
-export class UserCouponGoodsEntity {
-  @PrimaryGeneratedColumn({ type: "int", name: "id" })
-  id: number;
+export class UserCouponGoodsEntity extends BaseEntity {
+  @Column("bigint", { primary: true, name: "id", unsigned: true })
+  id: string;
 
-  @Column("int", { name: "mall_id", comment: "商城ID", default: () => "'0'" })
-  mallId: number;
+  @Column("bigint", {
+    name: "mall_id",
+    comment: "商城ID",
+    default: () => "'0'",
+  })
+  mallId: string;
 
-  @Column("int", {
+  @Column("bigint", {
     name: "user_coupon_id",
     comment: "优惠券ID",
     default: () => "'0'",
   })
-  userCouponId: number;
+  userCouponId: string;
 
-  @Column("int", { name: "user_id", comment: "用户ID", default: () => "'0'" })
-  userId: number;
+  @Column("bigint", {
+    name: "user_id",
+    comment: "用户ID",
+    default: () => "'0'",
+  })
+  userId: string;
 
-  @Column("int", { name: "goods_id", comment: "商品ID" })
-  goodsId: number;
+  @Column("bigint", { name: "goods_id", comment: "商品ID" })
+  goodsId: string;
 
   @Column("int", {
     name: "is_delete",
@@ -51,4 +60,9 @@ export class UserCouponGoodsEntity {
     default: () => "'0000-00-00 00:00:00'",
   })
   deletedAt: Date;
+
+  constructor(init?: Partial<UserCouponGoodsEntity>) {
+    super();
+    Object.assign(this, init);
+  }
 }

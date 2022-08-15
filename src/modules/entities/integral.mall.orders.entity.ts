@@ -1,15 +1,15 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column, Entity } from "typeorm";
 
 @Entity("t_integral_mall_orders", { schema: "norait_shop" })
-export class IntegralMallOrdersEntity {
-  @PrimaryGeneratedColumn({ type: "int", name: "id" })
-  id: number;
+export class IntegralMallOrdersEntity extends BaseEntity {
+  @Column("bigint", { primary: true, name: "id", unsigned: true })
+  id: string;
 
-  @Column("int", { name: "mall_id" })
-  mallId: number;
+  @Column("bigint", { name: "mall_id" })
+  mallId: string;
 
-  @Column("int", { name: "order_id" })
-  orderId: number;
+  @Column("bigint", { name: "order_id" })
+  orderId: string;
 
   @Column("varchar", { name: "token", length: 255 })
   token: string;
@@ -36,4 +36,9 @@ export class IntegralMallOrdersEntity {
     default: () => "'0000-00-00 00:00:00'",
   })
   deletedAt: Date;
+
+  constructor(init?: Partial<IntegralMallOrdersEntity>) {
+    super();
+    Object.assign(this, init);
+  }
 }

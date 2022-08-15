@@ -1,13 +1,14 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, Index } from "typeorm";
+import { BaseEntity } from "./base.entity";
 
 @Index("mall_id", ["mallId"], {})
 @Entity("t_wxapp_config", { schema: "norait_shop" })
-export class WxappConfigEntity {
-  @PrimaryGeneratedColumn({ type: "int", name: "id", unsigned: true })
-  id: number;
+export class WxappConfigEntity extends BaseEntity {
+  @Column("bigint", { primary: true, name: "id", unsigned: true })
+  id: string;
 
-  @Column("int", { name: "mall_id" })
-  mallId: number;
+  @Column("bigint", { name: "mall_id" })
+  mallId: string;
 
   @Column("varchar", { name: "appid", length: 128 })
   appid: string;
@@ -38,4 +39,9 @@ export class WxappConfigEntity {
 
   @Column("varchar", { name: "key_pem", length: 2000 })
   keyPem: string;
+
+  constructor(init?: Partial<WxappConfigEntity>) {
+    super();
+    Object.assign(this, init);
+  }
 }

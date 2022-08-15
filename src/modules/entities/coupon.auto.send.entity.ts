@@ -1,15 +1,15 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column, Entity } from "typeorm";
 
 @Entity("t_coupon_auto_send", { schema: "norait_shop" })
-export class CouponAutoSendEntity {
-  @PrimaryGeneratedColumn({ type: "int", name: "id" })
-  id: number;
+export class CouponAutoSendEntity extends BaseEntity {
+  @Column("bigint", { primary: true, name: "id", unsigned: true })
+  id: string;
 
-  @Column("int", { name: "mall_id" })
-  mallId: number;
+  @Column("bigint", { name: "mall_id" })
+  mallId: string;
 
-  @Column("int", { name: "coupon_id", comment: "优惠卷" })
-  couponId: number;
+  @Column("bigint", { name: "coupon_id", comment: "优惠卷" })
+  couponId: string;
 
   @Column("int", {
     name: "event",
@@ -65,4 +65,9 @@ export class CouponAutoSendEntity {
     comment: "指定用户id列表",
   })
   userList: string | null;
+
+  constructor(init?: Partial<CouponAutoSendEntity>) {
+    super();
+    Object.assign(this, init);
+  }
 }

@@ -1,20 +1,21 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, Index } from "typeorm";
+import { BaseEntity } from "./base.entity";
 
 @Index("is_delete", ["isDelete"], {})
 @Index("user_id", ["userId"], {})
 @Entity("t_favorite", { schema: "norait_shop" })
-export class FavoriteEntity {
-  @PrimaryGeneratedColumn({ type: "int", name: "id" })
-  id: number;
+export class FavoriteEntity extends BaseEntity {
+  @Column("bigint", { primary: true, name: "id", unsigned: true })
+  id: string;
 
-  @Column("int", { name: "mall_id", default: () => "'0'" })
-  mallId: number;
+  @Column("bigint", { name: "mall_id", default: () => "'0'" })
+  mallId: string;
 
-  @Column("int", { name: "user_id", default: () => "'0'" })
-  userId: number;
+  @Column("bigint", { name: "user_id", default: () => "'0'" })
+  userId: string;
 
-  @Column("int", { name: "goods_id", default: () => "'0'" })
-  goodsId: number;
+  @Column("bigint", { name: "goods_id", default: () => "'0'" })
+  goodsId: string;
 
   @Column("decimal", {
     name: "mirror_price",
@@ -46,11 +47,16 @@ export class FavoriteEntity {
   })
   updatedAt: Date;
 
-  @Column("int", {
+  @Column("bigint", {
     name: "favorite_mch_id",
     nullable: true,
     comment: "商户ID",
     default: () => "'0'",
   })
-  favoriteMchId: number | null;
+  favoriteMchId: string | null;
+
+  constructor(init?: Partial<FavoriteEntity>) {
+    super();
+    Object.assign(this, init);
+  }
 }

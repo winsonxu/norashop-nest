@@ -1,18 +1,19 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, Index } from "typeorm";
+import { BaseEntity } from "./base.entity";
 
 @Index("mall_id", ["mallId"], {})
 @Index("type", ["type"], {})
 @Index("user_id", ["userId"], {})
 @Entity("t_integral_log", { schema: "norait_shop" })
-export class IntegralLogEntity {
-  @PrimaryGeneratedColumn({ type: "int", name: "id" })
-  id: number;
+export class IntegralLogEntity extends BaseEntity {
+  @Column("bigint", { primary: true, name: "id", unsigned: true })
+  id: string;
 
-  @Column("int", { name: "mall_id" })
-  mallId: number;
+  @Column("bigint", { name: "mall_id" })
+  mallId: string;
 
-  @Column("int", { name: "user_id" })
-  userId: number;
+  @Column("bigint", { name: "user_id" })
+  userId: string;
 
   @Column("tinyint", {
     name: "type",
@@ -38,4 +39,9 @@ export class IntegralLogEntity {
     default: () => "CURRENT_TIMESTAMP",
   })
   createdAt: Date;
+
+  constructor(init?: Partial<IntegralLogEntity>) {
+    super();
+    Object.assign(this, init);
+  }
 }

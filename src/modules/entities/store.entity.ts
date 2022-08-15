@@ -1,15 +1,15 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column, Entity } from "typeorm";
 
 @Entity("t_store", { schema: "norait_shop" })
-export class StoreEntity {
-  @PrimaryGeneratedColumn({ type: "int", name: "id", unsigned: true })
-  id: number;
+export class StoreEntity extends BaseEntity {
+  @Column("bigint", { primary: true, name: "id", unsigned: true })
+  id: string;
 
-  @Column("int", { name: "mall_id" })
-  mallId: number;
+  @Column("bigint", { name: "mall_id" })
+  mallId: string;
 
-  @Column("int", { name: "mch_id", default: () => "'0'" })
-  mchId: number;
+  @Column("bigint", { name: "mch_id", default: () => "'0'" })
+  mchId: string;
 
   @Column("varchar", { name: "name", comment: "店铺名称", length: 65 })
   name: string;
@@ -20,14 +20,14 @@ export class StoreEntity {
   @Column("varchar", { name: "address", comment: "地址", length: 255 })
   address: string;
 
-  @Column("int", { name: "province_id", default: () => "'0'" })
-  provinceId: number;
+  @Column("bigint", { name: "province_id", default: () => "'0'" })
+  provinceId: string;
 
-  @Column("int", { name: "city_id", default: () => "'0'" })
-  cityId: number;
+  @Column("bigint", { name: "city_id", default: () => "'0'" })
+  cityId: string;
 
-  @Column("int", { name: "district_id", default: () => "'0'" })
-  districtId: number;
+  @Column("bigint", { name: "district_id", default: () => "'0'" })
+  districtId: string;
 
   @Column("varchar", { name: "longitude", comment: "经度", length: 255 })
   longitude: string;
@@ -104,4 +104,9 @@ export class StoreEntity {
     default: () => "'1'",
   })
   status: boolean;
+
+  constructor(init?: Partial<StoreEntity>) {
+    super();
+    Object.assign(this, init);
+  }
 }

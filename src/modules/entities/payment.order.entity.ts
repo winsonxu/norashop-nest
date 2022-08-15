@@ -1,16 +1,17 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, Index } from "typeorm";
+import { BaseEntity } from "./base.entity";
 
 @Index("is_pay", ["isPay"], {})
 @Index("order_no", ["orderNo"], {})
 @Index("pay_type", ["payType"], {})
 @Index("payment_order_union_id", ["paymentOrderUnionId"], {})
 @Entity("t_payment_order", { schema: "norait_shop" })
-export class PaymentOrderEntity {
-  @PrimaryGeneratedColumn({ type: "int", name: "id" })
-  id: number;
+export class PaymentOrderEntity extends BaseEntity {
+  @Column("bigint", { primary: true, name: "id", unsigned: true })
+  id: string;
 
-  @Column("int", { name: "payment_order_union_id" })
-  paymentOrderUnionId: number;
+  @Column("bigint", { name: "payment_order_union_id" })
+  paymentOrderUnionId: string;
 
   @Column("varchar", { name: "order_no", length: 32 })
   orderNo: string;
@@ -52,4 +53,9 @@ export class PaymentOrderEntity {
     default: () => "'0.00'",
   })
   refund: string;
+
+  constructor(init?: Partial<PaymentOrderEntity>) {
+    super();
+    Object.assign(this, init);
+  }
 }

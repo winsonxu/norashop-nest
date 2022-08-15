@@ -1,17 +1,18 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, Index } from "typeorm";
+import { BaseEntity } from "./base.entity";
 
 @Index("index1", ["goodsId"], {})
 @Index("mall_id", ["mallId"], {})
 @Entity("t_mall_goods", { schema: "norait_shop" })
-export class MallGoodsEntity {
-  @PrimaryGeneratedColumn({ type: "int", name: "id" })
-  id: number;
+export class MallGoodsEntity extends BaseEntity {
+  @Column("bigint", { primary: true, name: "id", unsigned: true })
+  id: string;
 
-  @Column("int", { name: "mall_id" })
-  mallId: number;
+  @Column("bigint", { name: "mall_id" })
+  mallId: string;
 
-  @Column("int", { name: "goods_id" })
-  goodsId: number;
+  @Column("bigint", { name: "goods_id" })
+  goodsId: string;
 
   @Column("tinyint", {
     name: "is_quick_shop",
@@ -51,4 +52,9 @@ export class MallGoodsEntity {
 
   @Column("tinyint", { name: "is_delete", width: 1, default: () => "'0'" })
   isDelete: boolean;
+
+  constructor(init?: Partial<MallGoodsEntity>) {
+    super();
+    Object.assign(this, init);
+  }
 }

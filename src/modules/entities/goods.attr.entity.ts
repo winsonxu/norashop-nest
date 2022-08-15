@@ -1,15 +1,16 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, Index } from "typeorm";
+import { BaseEntity } from "./base.entity";
 
 @Index("goods_id", ["goodsId"], {})
 @Index("index1", ["goodsId", "isDelete"], {})
 @Index("is_delete", ["isDelete"], {})
 @Entity("t_goods_attr", { schema: "norait_shop" })
-export class GoodsAttrEntity {
-  @PrimaryGeneratedColumn({ type: "int", name: "id", unsigned: true })
-  id: number;
+export class GoodsAttrEntity extends BaseEntity {
+  @Column("bigint", { primary: true, name: "id", unsigned: true })
+  id: string;
 
-  @Column("int", { name: "goods_id" })
-  goodsId: number;
+  @Column("bigint", { name: "goods_id" })
+  goodsId: string;
 
   @Column("varchar", { name: "sign_id", comment: "规格ID标识", length: 255 })
   signId: string;
@@ -59,4 +60,9 @@ export class GoodsAttrEntity {
     default: () => "'0.00'",
   })
   costPrice: string | null;
+
+  constructor(init?: Partial<GoodsAttrEntity>) {
+    super();
+    Object.assign(this, init);
+  }
 }

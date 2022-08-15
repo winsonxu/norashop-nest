@@ -2,14 +2,14 @@
  * @Author: winsonxu winsonxu@outlook.com
  * @Date: 2022-08-07 21:10:19
  * @LastEditors: winsonxu winsonxu@outlook.com
- * @LastEditTime: 2022-08-13 16:20:32
+ * @LastEditTime: 2022-08-15 12:15:40
  * @Description: 
  * 
  * Copyright (c) 2022 by norait, All Rights Reserved. 
  */
 import { Body, Controller, Post, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { Crud, CrudController } from '@nestjsx/crud';
+import { Crud, CrudController, CrudRequest, Override, ParsedBody, ParsedRequest } from '@nestjsx/crud';
 import { UserEntity } from 'src/modules/entities/user.entity';
 import { UserService } from '../../services/user.service';
 
@@ -22,6 +22,7 @@ import { UserService } from '../../services/user.service';
 @UseGuards(AuthGuard('jwt'))
 export class UserController implements CrudController<UserEntity>  {
   constructor(public readonly service: UserService){}
+
 
   // @Get('list')
   // async getUsers(@User() user: UserEntity): Promise<UserEntity[]> {

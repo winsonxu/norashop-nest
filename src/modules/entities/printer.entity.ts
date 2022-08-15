@@ -1,15 +1,15 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column, Entity } from "typeorm";
 
 @Entity("t_printer", { schema: "norait_shop" })
-export class PrinterEntity {
-  @PrimaryGeneratedColumn({ type: "int", name: "id" })
-  id: number;
+export class PrinterEntity extends BaseEntity {
+  @Column("bigint", { primary: true, name: "id", unsigned: true })
+  id: string;
 
-  @Column("int", { name: "mall_id" })
-  mallId: number;
+  @Column("bigint", { name: "mall_id" })
+  mallId: string;
 
-  @Column("int", { name: "mch_id", default: () => "'0'" })
-  mchId: number;
+  @Column("bigint", { name: "mch_id", default: () => "'0'" })
+  mchId: string;
 
   @Column("varchar", { name: "type", comment: "类型", length: 255 })
   type: string;
@@ -45,4 +45,9 @@ export class PrinterEntity {
     default: () => "'0000-00-00 00:00:00'",
   })
   deletedAt: Date;
+
+  constructor(init?: Partial<PrinterEntity>) {
+    super();
+    Object.assign(this, init);
+  }
 }

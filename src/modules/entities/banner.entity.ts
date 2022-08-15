@@ -1,12 +1,12 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column, Entity } from "typeorm";
 
 @Entity("t_banner", { schema: "norait_shop" })
-export class BannerEntity {
-  @PrimaryGeneratedColumn({ type: "int", name: "id" })
-  id: number;
+export class BannerEntity extends BaseEntity {
+  @Column("bigint", { primary: true, name: "id", unsigned: true })
+  id: string;
 
-  @Column("int", { name: "mall_id", default: () => "'0'" })
-  mallId: number;
+  @Column("bigint", { name: "mall_id", default: () => "'0'" })
+  mallId: string;
 
   @Column("varchar", { name: "pic_url", comment: "图片", length: 2080 })
   picUrl: string;
@@ -52,4 +52,9 @@ export class BannerEntity {
 
   @Column("longtext", { name: "link", nullable: true, comment: "链接详情" })
   link: string | null;
+
+  constructor(init?: Partial<BannerEntity>) {
+    super();
+    Object.assign(this, init);
+  }
 }
