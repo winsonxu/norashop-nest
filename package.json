@@ -23,7 +23,7 @@
     "typeorm:run": "typeorm-ts-node-commonjs migration:run -d datasource.ts",
     "typeorm:gen": "typeorm-ts-node-commonjs migration:generate -d datasource.ts",
     "typeorm:rev": "typeorm-ts-node-commonjs migration:revert -d datasource.ts",
-    "db": "rm -rf entities & npx typeorm-model-generator -h localhost -d norait_shop -p 3306 -u root -x root -e mysql -o entities --noConfig true --ce pascal --cp camel"
+    "db": "rm -rf entities & npx typeorm-model-generator -h localhost -d norait_shop -p 3306 -u root -x root -e mysql -o entities --noConfig true --cf none --ce pascal --cp camel --namingStrategy=./myNamingStrategy.js --unhandled-rejections=strict"
   },
   "dependencies": {
     "@nestjs/common": "^9.0.0",
@@ -73,6 +73,7 @@
     "ts-loader": "^9.3.1",
     "ts-node": "^10.8.2",
     "tsconfig-paths": "4.0.0",
+    "typeorm-model-generator": "^0.4.6",
     "typescript": "^4.7.4"
   },
   "jest": {
