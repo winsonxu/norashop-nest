@@ -1,0 +1,29 @@
+[
+  {
+    "_id": "3509dc7f-e703-47f4-adb7-c8934ac8088a",
+    "colName": "web端",
+    "created": "2022-08-15T10:55:10.811Z",
+    "sortNum": 10000,
+    "folders": [
+      {
+        "_id": "c59ecc72-9713-4b60-9e19-83d45d2012bc",
+        "name": "员工管理",
+        "containerId": "",
+        "created": "2022-08-15T11:46:59.486Z",
+        "sortNum": 10000
+      }
+    ],
+    "settings": {
+      "headers": [],
+      "auth": {
+        "type": "bearer",
+        "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWQiOiIxNCIsImlhdCI6MTY2MDU2MzgwNSwiZXhwIjoxNjkxNjY3ODA1fQ.G_pZemf1eyzECR6Tes-yW5TDjjvSdFdYmkIx5E7zcgw",
+        "bearerPrefix": "Bearer "
+      },
+      "tests": [],
+      "options": {
+        "baseUrl": "http://localhost:58511/web"
+      }
+    }
+  }
+]

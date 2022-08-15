@@ -2,7 +2,7 @@
  * @Author: winsonxu winsonxu@outlook.com
  * @Date: 2022-08-07 21:10:19
  * @LastEditors: winsonxu winsonxu@outlook.com
- * @LastEditTime: 2022-08-15 12:15:40
+ * @LastEditTime: 2022-08-15 20:10:04
  * @Description: 
  * 
  * Copyright (c) 2022 by norait, All Rights Reserved. 
@@ -17,6 +17,11 @@ import { UserService } from '../../services/user.service';
   model: {
     type: UserEntity,
   },
+//   routes:{
+//   updateOneBase: {
+//     allowParamsOverride: true
+//   },
+// }
 })
 @Controller('web/user')
 @UseGuards(AuthGuard('jwt'))

@@ -1,0 +1,100 @@
+[
+  {
+    "_id": "59c3d24c-4d4c-47c5-a977-27cce08ec366",
+    "colId": "3509dc7f-e703-47f4-adb7-c8934ac8088a",
+    "containerId": "c59ecc72-9713-4b60-9e19-83d45d2012bc",
+    "name": "全部员工",
+    "url": "/user",
+    "method": "GET",
+    "sortNum": 10000,
+    "created": "2022-08-15T11:45:47.060Z",
+    "modified": "2022-08-15T11:47:01.906Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "388e10e5-7655-4796-b174-20fb47853b0c",
+    "colId": "3509dc7f-e703-47f4-adb7-c8934ac8088a",
+    "containerId": "c59ecc72-9713-4b60-9e19-83d45d2012bc",
+    "name": "创建员工",
+    "url": "/user",
+    "method": "POST",
+    "sortNum": 50000,
+    "created": "2022-08-15T11:47:20.808Z",
+    "modified": "2022-08-15T11:47:53.367Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"mallId\": 95,\n    \"mchId\": 87,\n    \"username\": \"majun\",\n    \"password\": \"cillum\",\n    \"nickname\": \"龙刚\",\n    \"authKey\": \"cupidatat proident sit\",\n    \"accessToken\": \"Excepteur\",\n    \"mobile\": \"18153754264\",\n    \"unionid\": \"56\",\n    \"isDelete\": 51,\n    \"menu\": {}\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "4bb5d64f-bc29-47c4-b6a4-9266f9bee605",
+    "colId": "3509dc7f-e703-47f4-adb7-c8934ac8088a",
+    "containerId": "c59ecc72-9713-4b60-9e19-83d45d2012bc",
+    "name": "获取特定员工",
+    "url": "/user/{id}",
+    "method": "GET",
+    "sortNum": 60000,
+    "created": "2022-08-15T11:48:19.302Z",
+    "modified": "2022-08-15T11:49:25.562Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "id",
+        "value": "14",
+        "isPath": true
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "3a64b3a2-efce-4aac-b702-e7d282e4d094",
+    "colId": "3509dc7f-e703-47f4-adb7-c8934ac8088a",
+    "containerId": "c59ecc72-9713-4b60-9e19-83d45d2012bc",
+    "name": "更新员工信息",
+    "url": "/user/{id}",
+    "method": "PATCH",
+    "sortNum": 70000,
+    "created": "2022-08-15T11:49:50.528Z",
+    "modified": "2022-08-15T12:04:51.062Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "id",
+        "value": "15",
+        "isPath": true
+      }
+    ],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"accessToken\": \"ahahaha\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "4e905514-74b4-43bc-b987-7006ca26e257",
+    "colId": "3509dc7f-e703-47f4-adb7-c8934ac8088a",
+    "containerId": "c59ecc72-9713-4b60-9e19-83d45d2012bc",
+    "name": "删除员工",
+    "url": "/user/{id}",
+    "method": "DELETE",
+    "sortNum": 80000,
+    "created": "2022-08-15T12:16:21.121Z",
+    "modified": "2022-08-15T12:16:40.362Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "id",
+        "value": "6801670444331008",
+        "isPath": true
+      }
+    ],
+    "tests": []
+  }
+]

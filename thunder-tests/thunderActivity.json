@@ -1,0 +1,21 @@
+[
+  {
+    "_id": "47330c6b-4e60-4f43-9f96-739855b8b777",
+    "colId": "history",
+    "containerId": "",
+    "name": "web员工登陆",
+    "url": "http://localhost:58511/web/auth/login",
+    "method": "POST",
+    "sortNum": 0,
+    "created": "2022-08-15T10:54:51.645Z",
+    "modified": "2022-08-15T11:17:15.467Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"username\": \"admin\",\n  \"password\": \"123456\"\n}",
+      "form": []
+    },
+    "tests": []
+  }
+]
