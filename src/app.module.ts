@@ -16,6 +16,8 @@ import { HelloService } from './modules/services/hello.service';
 import { UserService } from './modules/services/user.service';
 import { UserEntity } from './modules/entities/user.entity';
 import { SnakeNamingStrategy } from './core/common/snake-naming.strategy';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 
 @Module({
   imports: [
@@ -26,6 +28,9 @@ import { SnakeNamingStrategy } from './core/common/snake-naming.strategy';
       imports: [SharedModule],
       useFactory: (configService: ApiConfigService) => configService.TypeOrmConfig,
       inject: [ApiConfigService],
+    }),
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'public'),
     }),
     WebModule,
     MobileModule

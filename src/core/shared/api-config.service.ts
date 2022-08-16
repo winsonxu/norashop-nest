@@ -192,4 +192,11 @@ export class ApiConfigService {
 
     return value;
   }
+
+  get uploadConfig() {
+    return { 
+      uploadPath: this.getString('UPLOAD_PATH'),
+      uploadDomain: this.getString('UPLOAD_DOMAIN'),
+    }
+  }
 }
