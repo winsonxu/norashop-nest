@@ -2,7 +2,7 @@
  * @Author: winsonxu winsonxu@outlook.com
  * @Date: 2022-08-15 21:39:58
  * @LastEditors: winsonxu winsonxu@outlook.com
- * @LastEditTime: 2022-08-16 14:40:51
+ * @LastEditTime: 2022-08-16 20:12:05
  * @Description: 
  * 
  * Copyright (c) 2022 by norait, All Rights Reserved. 
@@ -17,7 +17,7 @@ import { UploadService } from "src/modules/services/upload.service";
 import { UploadDto } from "./upload.dto";
 
 @Controller('web/upload')
-// @UseGuards(AuthGuard('jwt'))
+@UseGuards(AuthGuard('jwt'))
 export class UploadController{
   constructor(private readonly uploadService: UploadService){ }
 

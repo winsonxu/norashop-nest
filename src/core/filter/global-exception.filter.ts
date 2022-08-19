@@ -16,7 +16,7 @@ import { BusinessException } from 'src/core/exception/business.exception';
 
 @Catch()
 export class GlobalExceptionFilter implements ExceptionFilter {
-  catch(exception: unknown, host: ArgumentsHost) {
+  catch(exception: any, host: ArgumentsHost) {
     const ctx = host.switchToHttp();
     const response = ctx.getResponse();
     const request = ctx.getRequest();
@@ -29,6 +29,11 @@ export class GlobalExceptionFilter implements ExceptionFilter {
       response.status(status).json({
         code: status,
         message: exception.message,
+      });
+    } else if (exception.code === 'ENOENT') {
+      response.status(HttpStatus.NOT_FOUND).json({
+        code: HttpStatus.NOT_FOUND,
+        message: 'Not Found'
       });
     } else {
       response.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
