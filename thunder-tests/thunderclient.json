@@ -96,5 +96,25 @@
       }
     ],
     "tests": []
+  },
+  {
+    "_id": "415d32af-6169-40a0-9d08-9a3ce58c0cdf",
+    "colId": "3509dc7f-e703-47f4-adb7-c8934ac8088a",
+    "containerId": "c59ecc72-9713-4b60-9e19-83d45d2012bc",
+    "name": "查询员工",
+    "url": "/user?s={\"username\":\"xupeng\"}",
+    "method": "GET",
+    "sortNum": 30000,
+    "created": "2022-08-19T07:00:40.901Z",
+    "modified": "2022-08-19T07:01:28.720Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "s",
+        "value": "{\"username\":\"xupeng\"}",
+        "isPath": false
+      }
+    ],
+    "tests": []
   }
 ]
