@@ -12,6 +12,13 @@
         "created": "2022-08-15T11:46:59.486Z",
         "sortNum": 10000,
         "settings": {}
+      },
+      {
+        "_id": "54ac7683-1c3c-49ad-815f-632bb4f4a47b",
+        "name": "商城管理",
+        "containerId": "",
+        "created": "2022-08-20T01:46:21.195Z",
+        "sortNum": 30000
       }
     ],
     "settings": {

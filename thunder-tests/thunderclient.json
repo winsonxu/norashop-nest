@@ -116,5 +116,19 @@
       }
     ],
     "tests": []
+  },
+  {
+    "_id": "31131038-d8cd-4be3-90e0-59e52baf4e7a",
+    "colId": "3509dc7f-e703-47f4-adb7-c8934ac8088a",
+    "containerId": "54ac7683-1c3c-49ad-815f-632bb4f4a47b",
+    "name": "后台菜单",
+    "url": "/mall/menu",
+    "method": "GET",
+    "sortNum": 90000,
+    "created": "2022-08-20T01:46:30.039Z",
+    "modified": "2022-08-20T01:47:08.478Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]

@@ -2,7 +2,7 @@
  * @Author: winsonxu winsonxu@outlook.com
  * @Date: 2022-08-12 14:20:27
  * @LastEditors: winsonxu winsonxu@outlook.com
- * @LastEditTime: 2022-08-16 14:03:54
+ * @LastEditTime: 2022-08-20 09:48:14
  * @Description: 
  * 
  * Copyright (c) 2022 by norait, All Rights Reserved. 
@@ -31,6 +31,7 @@ import { UserController } from "./users/user.controller"
 import { UserCouponAutoController } from "./users/user.coupon.auto.controller"
 import { v4 as uuidv4 } from 'uuid';
 import { extname } from "path"
+import { MallController } from "./mall/mall.controller"
 
 const controllers = [
   AppController,
@@ -38,7 +39,8 @@ const controllers = [
   UploadController,
   UserController,
   HelloController,
-  UserCouponAutoController
+  UserCouponAutoController,
+  MallController,
 ]
 // const controllers = [ 
   
