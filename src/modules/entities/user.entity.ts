@@ -1,23 +1,13 @@
-/*
- * @Author: winsonxu winsonxu@outlook.com
- * @Date: 2022-08-15 12:07:53
- * @LastEditors: winsonxu winsonxu@outlook.com
- * @LastEditTime: 2022-08-15 19:57:56
- * @Description: 
- * 
- * Copyright (c) 2022 by norait, All Rights Reserved. 
- */
-import { Column, Entity, Index } from "typeorm";
-import { BaseEntity } from "./base.entity";
+import { BaseEntity, Column, Entity, Index } from "typeorm";
 
+@Index("username", ["username"], {})
 @Index("access_token", ["accessToken"], {})
 @Index("mall_id", ["mallId"], {})
 @Index("mch_id", ["mchId"], {})
-@Index("username", ["username"], {})
 @Entity("t_user", { schema: "norait_shop" })
 export class UserEntity extends BaseEntity {
-  // @Column("bigint", { primary: true, name: "id", unsigned: true })
-  // id: string;
+  @Column("bigint", { primary: true, name: "id", unsigned: true })
+  id: string;
 
   @Column("bigint", { name: "mall_id" })
   mallId: string;

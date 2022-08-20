@@ -1,11 +1,10 @@
-import { Column, Entity, Index } from "typeorm";
-import { BaseEntity } from "./base.entity";
+import { BaseEntity, Column, Entity, Index } from "typeorm";
 
+@Index("store_id", ["mallId"], {})
+@Index("user_id", ["userId"], {})
 @Index("coupon_id", ["couponId"], {})
 @Index("is_delete", ["isDelete"], {})
 @Index("is_use", ["isUse"], {})
-@Index("store_id", ["mallId"], {})
-@Index("user_id", ["userId"], {})
 @Entity("t_user_coupon", { schema: "norait_shop" })
 export class UserCouponEntity extends BaseEntity {
   @Column("bigint", { primary: true, name: "id", unsigned: true })

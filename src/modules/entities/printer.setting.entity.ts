@@ -1,11 +1,10 @@
-import { Column, Entity, Index } from "typeorm";
-import { BaseEntity } from "./base.entity";
+import { BaseEntity, Column, Entity, Index } from "typeorm";
 
-@Index("is_delete", ["isDelete"], {})
 @Index("mall_id", ["mallId"], {})
 @Index("mch_id", ["mchId"], {})
 @Index("status", ["status"], {})
 @Index("store_id", ["storeId"], {})
+@Index("is_delete", ["isDelete"], {})
 @Entity("t_printer_setting", { schema: "norait_shop" })
 export class PrinterSettingEntity extends BaseEntity {
   @Column("bigint", { primary: true, name: "id", unsigned: true })

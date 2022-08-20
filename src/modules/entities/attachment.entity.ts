@@ -7,11 +7,11 @@ import {
 } from "typeorm";
 
 @Index("attachment_group_id", ["attachmentGroupId"], {})
-@Index("is_delete", ["isDelete"], {})
-@Index("is_recycle", ["isRecycle"], {})
 @Index("mall_id", ["mallId"], {})
 @Index("mch_id", ["mchId"], {})
 @Index("type", ["type"], {})
+@Index("is_delete", ["isDelete"], {})
+@Index("is_recycle", ["isRecycle"], {})
 @Entity("t_attachment", { schema: "norait_shop" })
 export class AttachmentEntity extends BaseEntity {
   @PrimaryGeneratedColumn({ type: "bigint", name: "id", unsigned: true })

@@ -1,8 +1,7 @@
-import { Column, Entity, Index } from "typeorm";
-import { BaseEntity } from "./base.entity";
+import { BaseEntity, Column, Entity, Index } from "typeorm";
 
-@Index("key", ["key"], {})
 @Index("mall_id", ["mallId"], {})
+@Index("key", ["key"], {})
 @Entity("t_mall_setting", { schema: "norait_shop" })
 export class MallSettingEntity extends BaseEntity {
   @Column("bigint", { primary: true, name: "id", unsigned: true })

@@ -22,12 +22,12 @@
     "method": "POST",
     "sortNum": 50000,
     "created": "2022-08-15T11:47:20.808Z",
-    "modified": "2022-08-15T11:47:53.367Z",
+    "modified": "2022-08-20T00:40:45.697Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n    \"mallId\": 95,\n    \"mchId\": 87,\n    \"username\": \"majun\",\n    \"password\": \"cillum\",\n    \"nickname\": \"龙刚\",\n    \"authKey\": \"cupidatat proident sit\",\n    \"accessToken\": \"Excepteur\",\n    \"mobile\": \"18153754264\",\n    \"unionid\": \"56\",\n    \"isDelete\": 51,\n    \"menu\": {}\n}",
+      "raw": "{\n  \"id\":1234567890123456,\n    \"mallId\": 4433333445443212,\n    \"mchId\": 1234567890123456,\n    \"username\": \"majun\",\n    \"password\": \"cillum\",\n    \"nickname\": \"龙刚\",\n    \"authKey\": \"cupidatat proident sit\",\n    \"accessToken\": \"Excepteur\",\n    \"mobile\": \"18153754264\",\n    \"unionid\": \"56\",\n    \"isDelete\": 0,\n    \"menu\": {}\n}",
       "form": []
     },
     "tests": []
@@ -41,12 +41,12 @@
     "method": "GET",
     "sortNum": 60000,
     "created": "2022-08-15T11:48:19.302Z",
-    "modified": "2022-08-15T11:49:25.562Z",
+    "modified": "2022-08-20T00:26:56.572Z",
     "headers": [],
     "params": [
       {
         "name": "id",
-        "value": "14",
+        "value": "6803272070938624",
         "isPath": true
       }
     ],
@@ -86,12 +86,12 @@
     "method": "DELETE",
     "sortNum": 80000,
     "created": "2022-08-15T12:16:21.121Z",
-    "modified": "2022-08-15T12:16:40.362Z",
+    "modified": "2022-08-20T00:40:43.979Z",
     "headers": [],
     "params": [
       {
         "name": "id",
-        "value": "6801670444331008",
+        "value": "1234567890123456",
         "isPath": true
       }
     ],

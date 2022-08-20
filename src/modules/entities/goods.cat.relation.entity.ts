@@ -1,8 +1,7 @@
-import { Column, Entity, Index } from "typeorm";
-import { BaseEntity } from "./base.entity";
+import { BaseEntity, Column, Entity, Index } from "typeorm";
 
-@Index("cat_id", ["catId"], {})
 @Index("goods_warehouse_id", ["goodsWarehouseId"], {})
+@Index("cat_id", ["catId"], {})
 @Entity("t_goods_cat_relation", { schema: "norait_shop" })
 export class GoodsCatRelationEntity extends BaseEntity {
   @Column("bigint", { primary: true, name: "id", unsigned: true })

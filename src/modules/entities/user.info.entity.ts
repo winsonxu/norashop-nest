@@ -1,10 +1,9 @@
-import { Column, Entity, Index } from "typeorm";
-import { BaseEntity } from "./base.entity";
+import { BaseEntity, Column, Entity, Index } from "typeorm";
 
+@Index("user_id", ["userId"], {})
 @Index("parent_id", ["parentId"], {})
 @Index("platform_user_id", ["platformUserId"], {})
 @Index("temp_parent_id", ["tempParentId"], {})
-@Index("user_id", ["userId"], {})
 @Entity("t_user_info", { schema: "norait_shop" })
 export class UserInfoEntity extends BaseEntity {
   @Column("bigint", { primary: true, name: "id", unsigned: true })

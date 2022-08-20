@@ -1,8 +1,7 @@
-import { Column, Entity, Index } from "typeorm";
-import { BaseEntity } from "./base.entity";
+import { BaseEntity, Column, Entity, Index } from "typeorm";
 
-@Index("is_delete", ["isDelete"], {})
 @Index("store_id", ["mallId"], {})
+@Index("is_delete", ["isDelete"], {})
 @Entity("t_coupon", { schema: "norait_shop" })
 export class CouponEntity extends BaseEntity {
   @Column("bigint", { primary: true, name: "id", unsigned: true })

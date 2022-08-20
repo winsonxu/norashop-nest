@@ -1,9 +1,8 @@
-import { Column, Entity, Index } from "typeorm";
-import { BaseEntity } from "./base.entity";
+import { BaseEntity, Column, Entity, Index } from "typeorm";
 
 @Index("mall_id", ["mallId"], {})
-@Index("type", ["type"], {})
 @Index("user_id", ["userId"], {})
+@Index("type", ["type"], {})
 @Entity("t_integral_log", { schema: "norait_shop" })
 export class IntegralLogEntity extends BaseEntity {
   @Column("bigint", { primary: true, name: "id", unsigned: true })

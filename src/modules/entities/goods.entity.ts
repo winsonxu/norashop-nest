@@ -1,20 +1,19 @@
-import { Column, Entity, Index } from "typeorm";
-import { BaseEntity } from "./base.entity";
+import { BaseEntity, Column, Entity, Index } from "typeorm";
 
-@Index("created_at", ["createdAt"], {})
+@Index("mall_id", ["mallId"], {})
 @Index("goods_warehouse_id", ["goodsWarehouseId"], {})
+@Index("sign", ["sign"], {})
 @Index(
   "index1",
-  ["mallId", "goodsWarehouseId", "status", "sign", "isDelete"],
+  ["mallId", "isDelete", "sign", "status", "goodsWarehouseId"],
   {}
 )
-@Index("index2", ["mallId", "status", "isDelete"], {})
-@Index("is_delete", ["isDelete"], {})
-@Index("mall_id", ["mallId"], {})
-@Index("sales", ["sales"], {})
-@Index("sign", ["sign"], {})
-@Index("sort", ["sort"], {})
+@Index("index2", ["isDelete", "mallId", "status"], {})
 @Index("status", ["status"], {})
+@Index("is_delete", ["isDelete"], {})
+@Index("sort", ["sort"], {})
+@Index("created_at", ["createdAt"], {})
+@Index("sales", ["sales"], {})
 @Entity("t_goods", { schema: "norait_shop" })
 export class GoodsEntity extends BaseEntity {
   @Column("bigint", { primary: true, name: "id", unsigned: true })

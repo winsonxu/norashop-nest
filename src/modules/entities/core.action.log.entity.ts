@@ -1,5 +1,4 @@
-import { Column, Entity, Index } from "typeorm";
-import { BaseEntity } from "./base.entity";
+import { BaseEntity, Column, Entity, Index } from "typeorm";
 
 @Index("store_id", ["mallId"], {})
 @Entity("t_core_action_log", { schema: "norait_shop" })

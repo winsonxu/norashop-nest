@@ -1,5 +1,4 @@
-import { Column, Entity, Index } from "typeorm";
-import { BaseEntity } from "./base.entity";
+import { BaseEntity, Column, Entity, Index } from "typeorm";
 
 @Index("order_id", ["orderId"], {})
 @Entity("t_order_comments", { schema: "norait_shop" })

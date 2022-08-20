@@ -1,17 +1,7 @@
-/*
- * @Author: winsonxu winsonxu@outlook.com
- * @Date: 2022-08-15 12:07:53
- * @LastEditors: winsonxu winsonxu@outlook.com
- * @LastEditTime: 2022-08-15 12:14:13
- * @Description: 
- * 
- * Copyright (c) 2022 by norait, All Rights Reserved. 
- */
-import { Column, Entity, Index } from "typeorm";
-import { BaseEntity } from "./base.entity";
+import { BaseEntity, Column, Entity, Index } from "typeorm";
 
-@Index("auto_coupon_id", ["autoCouponId"], {})
 @Index("user_coupon_id", ["userCouponId"], {})
+@Index("auto_coupon_id", ["autoCouponId"], {})
 @Entity("t_user_coupon_auto", { schema: "norait_shop" })
 export class UserCouponAutoEntity extends BaseEntity {
   @Column("bigint", { primary: true, name: "id", unsigned: true })

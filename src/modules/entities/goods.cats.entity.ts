@@ -1,7 +1,6 @@
-import { Column, Entity, Index } from "typeorm";
-import { BaseEntity } from "./base.entity";
+import { BaseEntity, Column, Entity, Index } from "typeorm";
 
-@Index("index1", ["mallId", "mchId", "status", "isDelete", "isShow"], {})
+@Index("index1", ["isDelete", "status", "isShow", "mchId", "mallId"], {})
 @Index("mall_id", ["mallId"], {})
 @Index("mch_id", ["mchId"], {})
 @Index("parent_id", ["parentId"], {})

@@ -1,11 +1,10 @@
-import { Column, Entity, Index } from "typeorm";
-import { BaseEntity } from "./base.entity";
+import { BaseEntity, Column, Entity, Index } from "typeorm";
 
-@Index("is_pay", ["isPay"], {})
 @Index("mall_id", ["mallId"], {})
-@Index("order_no", ["orderNo"], {})
-@Index("pay_type", ["payType"], {})
 @Index("user_id", ["userId"], {})
+@Index("order_no", ["orderNo"], {})
+@Index("is_pay", ["isPay"], {})
+@Index("pay_type", ["payType"], {})
 @Entity("t_payment_order_union", { schema: "norait_shop" })
 export class PaymentOrderUnionEntity extends BaseEntity {
   @Column("bigint", { primary: true, name: "id", unsigned: true })
