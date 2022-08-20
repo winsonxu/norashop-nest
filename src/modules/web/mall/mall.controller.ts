@@ -1,11 +1,17 @@
-import { Controller, Get, UseGuards } from "@nestjs/common";
+import { Controller, Get, Param, UseGuards } from "@nestjs/common";
+import { JwtService } from "@nestjs/jwt";
 import { AuthGuard } from "@nestjs/passport";
 import { CrudController } from "@nestjsx/crud";
+import { CurrentMall } from "src/core/decorator/current.mall.decorator";
+import { CurrentUser } from "src/core/decorator/current.user.decorator";
+import { MallGuard } from "src/core/guard/mall.guard";
+import { JwtPayload } from "src/core/jwt/jwt.payload";
 import { UserEntity } from "src/modules/entities/user.entity";
 
 @Controller('web/mall')
-@UseGuards(AuthGuard('jwt'))
+@UseGuards(MallGuard('jwt'))
 export class MallController  {
+  constructor(private readonly jwtService: JwtService){}
   @Get('menu')
   menu(){
     return [
@@ -406,4 +412,11 @@ export class MallController  {
       }
     ];
   }
+
+  @Get('test')
+  async test(@CurrentUser() user:any, @CurrentMall() mall:any){
+    console.log('CurrentUser', user);
+    console.log('CurrentMall', mall);
+  }
+
 }

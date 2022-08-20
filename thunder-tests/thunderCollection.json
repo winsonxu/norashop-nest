@@ -11,23 +11,33 @@
         "containerId": "",
         "created": "2022-08-15T11:46:59.486Z",
         "sortNum": 10000,
-        "settings": {}
+        "settings": {
+          "headers": [],
+          "auth": {
+            "type": "bearer",
+            "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxNCIsImlhdCI6MTY2MTAwODA3NiwiZXhwIjoxNjkyMTEyMDc2fQ.5SLrCKjEThjX-cxz4kc3lhJxrLbayW134pth0TArU8I"
+          },
+          "tests": []
+        }
       },
       {
         "_id": "54ac7683-1c3c-49ad-815f-632bb4f4a47b",
         "name": "商城管理",
         "containerId": "",
         "created": "2022-08-20T01:46:21.195Z",
-        "sortNum": 30000
+        "sortNum": 30000,
+        "settings": {
+          "headers": [],
+          "auth": {
+            "type": "bearer",
+            "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxNCIsIm1hbGxJZCI6IjEiLCJpYXQiOjE2NjEwMDgyNTIsImV4cCI6MTY5MjExMjI1Mn0.deEsZSSqnLCtZMqij_WlAgF8LPytqKvvccpZCEac8t4"
+          },
+          "tests": []
+        }
       }
     ],
     "settings": {
       "headers": [],
-      "auth": {
-        "type": "bearer",
-        "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWQiOiIxNCIsImlhdCI6MTY2MDU2MzgwNSwiZXhwIjoxNjkxNjY3ODA1fQ.G_pZemf1eyzECR6Tes-yW5TDjjvSdFdYmkIx5E7zcgw",
-        "bearerPrefix": "Bearer "
-      },
       "tests": [],
       "options": {
         "baseUrl": "http://localhost:58511/web"

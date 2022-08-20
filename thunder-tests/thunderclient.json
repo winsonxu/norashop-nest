@@ -8,8 +8,13 @@
     "method": "GET",
     "sortNum": 10000,
     "created": "2022-08-15T11:45:47.060Z",
-    "modified": "2022-08-15T11:47:01.906Z",
-    "headers": [],
+    "modified": "2022-08-20T11:51:28.593Z",
+    "headers": [
+      {
+        "name": "mallId",
+        "value": "12"
+      }
+    ],
     "params": [],
     "tests": []
   },
@@ -127,6 +132,82 @@
     "sortNum": 90000,
     "created": "2022-08-20T01:46:30.039Z",
     "modified": "2022-08-20T01:47:08.478Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "3381c331-caae-4604-909c-80db7b71aa02",
+    "colId": "3509dc7f-e703-47f4-adb7-c8934ac8088a",
+    "containerId": "c59ecc72-9713-4b60-9e19-83d45d2012bc",
+    "name": "重置密码",
+    "url": "/user/setPassword/{id}",
+    "method": "POST",
+    "sortNum": 55000,
+    "created": "2022-08-20T13:13:16.293Z",
+    "modified": "2022-08-20T13:14:29.249Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "id",
+        "value": "6803325807759360",
+        "isPath": true
+      }
+    ],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"password\":1234567890123456\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "191aeee2-e5b5-4ac7-91a8-6d4e37f47c1e",
+    "colId": "3509dc7f-e703-47f4-adb7-c8934ac8088a",
+    "containerId": "c59ecc72-9713-4b60-9e19-83d45d2012bc",
+    "name": "test",
+    "url": "/user/test",
+    "method": "GET",
+    "sortNum": 20000,
+    "created": "2022-08-20T13:18:15.000Z",
+    "modified": "2022-08-20T13:32:21.170Z",
+    "headers": [
+      {
+        "name": "mallId",
+        "value": "12"
+      }
+    ],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "b14828b6-6404-46ee-a7cb-80d389c1583c",
+    "colId": "3509dc7f-e703-47f4-adb7-c8934ac8088a",
+    "containerId": "c59ecc72-9713-4b60-9e19-83d45d2012bc",
+    "name": "进入指定的商城",
+    "url": "/user/entry-mall/1",
+    "method": "GET",
+    "sortNum": 90000,
+    "created": "2022-08-20T13:59:37.081Z",
+    "modified": "2022-08-20T15:16:53.241Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxNCIsImlhdCI6MTY2MTAwODA3NiwiZXhwIjoxNjkyMTEyMDc2fQ.5SLrCKjEThjX-cxz4kc3lhJxrLbayW134pth0TArU8I"
+    },
+    "tests": []
+  },
+  {
+    "_id": "24bb3c71-4274-4615-944e-39b0feb3040a",
+    "colId": "3509dc7f-e703-47f4-adb7-c8934ac8088a",
+    "containerId": "54ac7683-1c3c-49ad-815f-632bb4f4a47b",
+    "name": "test",
+    "url": "/mall/test",
+    "method": "GET",
+    "sortNum": 110000,
+    "created": "2022-08-20T14:51:15.210Z",
+    "modified": "2022-08-20T14:51:39.757Z",
     "headers": [],
     "params": [],
     "tests": []

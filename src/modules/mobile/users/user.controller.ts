@@ -8,7 +8,7 @@
  * Copyright (c) 2022 by norait, All Rights Reserved. 
  */
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
-import { User } from 'src/core/decorator/user.decorator';
+import { CurrentUser } from 'src/core/decorator/current.user.decorator';
 import { ApiConfigService } from 'src/core/shared/api-config.service';
 import { UserEntity } from 'src/modules/entities/user.entity';
 import { FindOptionsWhere } from 'typeorm';
@@ -22,7 +22,7 @@ export class UserController {
     ){}
 
   @Get('list')
-  async getUsers(@User() user: UserEntity): Promise<UserEntity[]> {
+  async getUsers(@CurrentUser() user: UserEntity): Promise<UserEntity[]> {
     console.log('user', user);
     const manager =  this.apiConfigService.TypeOrmDatasource.manager.getRepository(UserEntity)
     const users = await manager.find();

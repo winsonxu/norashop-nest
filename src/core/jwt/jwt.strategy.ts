@@ -8,6 +8,7 @@ import { Injectable } from "@nestjs/common";
 import { PassportStrategy } from '@nestjs/passport';
 import { Strategy, ExtractJwt, VerifiedCallback } from "passport-jwt";
 import { BusinessException } from "src/core/exception/business.exception";
+import { MallEntity } from "src/modules/entities/mall.entity";
 import { UserEntity } from "src/modules/entities/user.entity";
 import { UserService } from "src/modules/services/user.service";
 import { JwtConstants } from "./jwt.constants";
@@ -22,7 +23,10 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
       secretOrKey: JwtConstants.secret
     })
   }
-  async validate(payload: JwtPayload, done: VerifiedCallback): Promise<UserEntity | null>{
-    return await this.userService.getById(payload.id);
+  async validate(payload: JwtPayload, done: VerifiedCallback): Promise<{user:UserEntity|null, mall: MallEntity|null} | null>{
+    console.log('payload', payload);
+    const user = await UserEntity.findOne({where:{id: payload.userId}});
+    const mall = payload.mallId ? await MallEntity.findOne({where:{id: payload.mallId}}) : null;
+    return {user , mall};
   }
 }

@@ -2,7 +2,7 @@
  * @Author: winsonxu winsonxu@outlook.com
  * @Date: 2022-08-12 13:56:33
  * @LastEditors: winsonxu winsonxu@outlook.com
- * @LastEditTime: 2022-08-13 13:06:30
+ * @LastEditTime: 2022-08-20 23:16:10
  * @Description: 
  * 
  * Copyright (c) 2022 by norait, All Rights Reserved. 
@@ -26,8 +26,10 @@ export class AuthController {
       const md5password = Md5.init(password)
       
       if(user.password.toLocaleLowerCase() !== md5password.toLocaleLowerCase()) throw new BusinessException(40002, '密码不正确')
-      const payload = new JwtPayload(user.username, user.id);
+      const payload = new JwtPayload(user.id);
       const token:string = await this.jwtService.signAsync(payload.toJSON());
       return token;
     }
+
+
 }
