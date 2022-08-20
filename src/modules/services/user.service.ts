@@ -2,7 +2,7 @@
  * @Author: winsonxu winsonxu@outlook.com
  * @Date: 2022-08-11 17:34:14
  * @LastEditors: winsonxu winsonxu@outlook.com
- * @LastEditTime: 2022-08-15 11:52:13
+ * @LastEditTime: 2022-08-20 13:27:58
  * @Description: 
  * 
  * Copyright (c) 2022 by norait, All Rights Reserved. 
@@ -44,7 +44,7 @@ export class UserService extends BaseService<UserEntity>{
     return this.userRepository.findOne({ where : { id } });
   }
 
-  async setPassword(id:number, password:string): Promise<void>{
+  async setPassword(id:string, password:string): Promise<void>{
     const md5password:string = Md5.init(password);
     const result:UpdateResult = await this.userRepository.update(id, { password: md5password });
     if(!result.affected){

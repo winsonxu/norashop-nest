@@ -2,12 +2,12 @@
  * @Author: winsonxu winsonxu@outlook.com
  * @Date: 2022-08-07 21:10:19
  * @LastEditors: winsonxu winsonxu@outlook.com
- * @LastEditTime: 2022-08-15 20:10:04
+ * @LastEditTime: 2022-08-20 13:29:04
  * @Description: 
  * 
  * Copyright (c) 2022 by norait, All Rights Reserved. 
  */
-import { Body, Controller, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Param, Post, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { Crud, CrudController, CrudRequest, Override, ParsedBody, ParsedRequest } from '@nestjsx/crud';
 import { UserEntity } from 'src/modules/entities/user.entity';
@@ -52,8 +52,8 @@ export class UserController implements CrudController<UserEntity>  {
   //   return result;
   // }
 
-  @Post('setPassword')
-  async setPassword(@Body("id") id:number, @Body("password") password:string): Promise<void>{
+  @Post('setPassword/:id')
+  async setPassword(@Param('id') id:string, @Body("password") password:string): Promise<void>{
     return this.service.setPassword(id, password);
   }
 
