@@ -34,6 +34,21 @@
           },
           "tests": []
         }
+      },
+      {
+        "_id": "9a7f6244-1d16-4ce4-a645-2ba417afacc7",
+        "name": "自动发券",
+        "containerId": "",
+        "created": "2022-08-20T16:05:52.929Z",
+        "sortNum": 20000,
+        "settings": {
+          "headers": [],
+          "auth": {
+            "type": "bearer",
+            "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxNCIsImlhdCI6MTY2MTAwODA3NiwiZXhwIjoxNjkyMTEyMDc2fQ.5SLrCKjEThjX-cxz4kc3lhJxrLbayW134pth0TArU8I"
+          },
+          "tests": []
+        }
       }
     ],
     "settings": {

@@ -184,12 +184,12 @@
     "_id": "b14828b6-6404-46ee-a7cb-80d389c1583c",
     "colId": "3509dc7f-e703-47f4-adb7-c8934ac8088a",
     "containerId": "c59ecc72-9713-4b60-9e19-83d45d2012bc",
-    "name": "进入指定的商城",
-    "url": "/user/entry-mall/1",
+    "name": "所属的商城",
+    "url": "/user/mall-list",
     "method": "GET",
     "sortNum": 90000,
     "created": "2022-08-20T13:59:37.081Z",
-    "modified": "2022-08-20T15:16:53.241Z",
+    "modified": "2022-08-21T03:13:38.717Z",
     "headers": [],
     "params": [],
     "auth": {
@@ -210,6 +210,165 @@
     "modified": "2022-08-20T14:51:39.757Z",
     "headers": [],
     "params": [],
+    "tests": []
+  },
+  {
+    "_id": "66cb4927-c950-48cd-96f3-eb2eca78998d",
+    "colId": "3509dc7f-e703-47f4-adb7-c8934ac8088a",
+    "containerId": "9a7f6244-1d16-4ce4-a645-2ba417afacc7",
+    "name": "全部发券规则",
+    "url": "/user-coupon-auto",
+    "method": "GET",
+    "sortNum": 10000,
+    "created": "2022-08-20T16:05:52.929Z",
+    "modified": "2022-08-20T16:07:38.175Z",
+    "headers": [
+      {
+        "name": "mallId",
+        "value": "12"
+      }
+    ],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "1289e8d8-97a4-4fd6-98ba-30b5488a283c",
+    "colId": "3509dc7f-e703-47f4-adb7-c8934ac8088a",
+    "containerId": "9a7f6244-1d16-4ce4-a645-2ba417afacc7",
+    "name": "查询员工",
+    "url": "/user?s={\"username\":\"xupeng\"}",
+    "method": "GET",
+    "sortNum": 30000,
+    "created": "2022-08-20T16:05:52.931Z",
+    "modified": "2022-08-20T16:05:52.929Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "s",
+        "value": "{\"username\":\"xupeng\"}",
+        "isPath": false
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "581db5ad-c218-4c99-af3b-d22db238966c",
+    "colId": "3509dc7f-e703-47f4-adb7-c8934ac8088a",
+    "containerId": "9a7f6244-1d16-4ce4-a645-2ba417afacc7",
+    "name": "创建发券规则",
+    "url": "/user-coupon-auto",
+    "method": "POST",
+    "sortNum": 50000,
+    "created": "2022-08-20T16:05:52.932Z",
+    "modified": "2022-08-20T16:18:55.687Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n      \"id\": \"888899\",\n      \"userCouponId\": \"222\",\n      \"autoCouponId\": \"223\",\n      \"isDelete\": 0\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "5a73a7ec-a399-4102-ae0f-87b350463696",
+    "colId": "3509dc7f-e703-47f4-adb7-c8934ac8088a",
+    "containerId": "9a7f6244-1d16-4ce4-a645-2ba417afacc7",
+    "name": "获取特定员工",
+    "url": "/user/{id}",
+    "method": "GET",
+    "sortNum": 60000,
+    "created": "2022-08-20T16:05:52.934Z",
+    "modified": "2022-08-20T16:05:52.929Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "id",
+        "value": "6803272070938624",
+        "isPath": true
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "89f86790-7970-446c-a8c2-cd4b787a3fd4",
+    "colId": "3509dc7f-e703-47f4-adb7-c8934ac8088a",
+    "containerId": "9a7f6244-1d16-4ce4-a645-2ba417afacc7",
+    "name": "更新员工信息",
+    "url": "/user/{id}",
+    "method": "PATCH",
+    "sortNum": 70000,
+    "created": "2022-08-20T16:05:52.935Z",
+    "modified": "2022-08-20T16:05:52.929Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "id",
+        "value": "15",
+        "isPath": true
+      }
+    ],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"accessToken\": \"ahahaha\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "17c8d562-c50f-4f83-a9f4-45ede136057c",
+    "colId": "3509dc7f-e703-47f4-adb7-c8934ac8088a",
+    "containerId": "9a7f6244-1d16-4ce4-a645-2ba417afacc7",
+    "name": "删除员工",
+    "url": "/user/{id}",
+    "method": "DELETE",
+    "sortNum": 80000,
+    "created": "2022-08-20T16:05:52.936Z",
+    "modified": "2022-08-20T16:05:52.929Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "id",
+        "value": "1234567890123456",
+        "isPath": true
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "2deb1a17-83dd-4121-ae28-49a8a69d6a7b",
+    "colId": "3509dc7f-e703-47f4-adb7-c8934ac8088a",
+    "containerId": "9a7f6244-1d16-4ce4-a645-2ba417afacc7",
+    "name": "进入指定的商城",
+    "url": "/user/entry-mall/1",
+    "method": "GET",
+    "sortNum": 90000,
+    "created": "2022-08-20T16:05:52.937Z",
+    "modified": "2022-08-20T16:05:52.929Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxNCIsImlhdCI6MTY2MTAwODA3NiwiZXhwIjoxNjkyMTEyMDc2fQ.5SLrCKjEThjX-cxz4kc3lhJxrLbayW134pth0TArU8I"
+    },
+    "tests": []
+  },
+  {
+    "_id": "1e82b3b5-fb77-40e0-a442-5f533be5179a",
+    "colId": "3509dc7f-e703-47f4-adb7-c8934ac8088a",
+    "containerId": "c59ecc72-9713-4b60-9e19-83d45d2012bc",
+    "name": "进入指定的商城 Copy",
+    "url": "/user/entry-mall/1",
+    "method": "GET",
+    "sortNum": 100000,
+    "created": "2022-08-21T03:13:30.795Z",
+    "modified": "2022-08-21T03:13:30.795Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxNCIsImlhdCI6MTY2MTAwODA3NiwiZXhwIjoxNjkyMTEyMDc2fQ.5SLrCKjEThjX-cxz4kc3lhJxrLbayW134pth0TArU8I"
+    },
     "tests": []
   }
 ]

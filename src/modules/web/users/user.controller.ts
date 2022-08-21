@@ -2,7 +2,7 @@
  * @Author: winsonxu winsonxu@outlook.com
  * @Date: 2022-08-07 21:10:19
  * @LastEditors: winsonxu winsonxu@outlook.com
- * @LastEditTime: 2022-08-20 23:16:28
+ * @LastEditTime: 2022-08-21 11:13:16
  * @Description: 
  * 
  * Copyright (c) 2022 by norait, All Rights Reserved. 
@@ -15,7 +15,8 @@ import { CurrentMall } from 'src/core/decorator/current.mall.decorator';
 import { CurrentUser } from 'src/core/decorator/current.user.decorator';
 import { CoreActionLogInterceptor } from 'src/core/interceptor/core.action.log.interceptor';
 import { JwtPayload } from 'src/core/jwt/jwt.payload';
-import { UserEntity } from 'src/modules/entities/user.entity';
+import { MallEntity } from 'src/modules/entities/mall.entity';
+import { isAdmin, UserEntity } from 'src/modules/entities/user.entity';
 import { UserService } from '../../services/user.service';
 
 @Crud({
@@ -39,8 +40,23 @@ export class UserController implements CrudController<UserEntity>  {
     console.log('currentMall',currentMall)
   }
 
+  /**
+   * @description: 返回可管理的商城列表，超级管理员全部，普通管理员它管理的，操作员和普通人都返回属于他的
+   * @return {*}
+   */  
+  @Get('mall-list')
+  async mallList(@CurrentUser() currentUser: UserEntity): Promise<MallEntity[]> {
+    
+    if(currentUser.isAdmin == isAdmin.SuperAdmin){
+      return MallEntity.find();
+    }else if (currentUser.isAdmin == isAdmin.Admin){
+      return MallEntity.findBy({ userId : currentUser.id })
+    }
+    return MallEntity.findBy({ id: currentUser.mallId })
+  }
+
   @Get('entry-mall/:mallId')
-  async entry(@Param("mallId") mallId: string,
+  async entryMall(@Param("mallId") mallId: string,
     @CurrentUser() currentUser:UserEntity): Promise<string> {
     // TODO:判断当前人是否有权限进入这个商城
     const payload = new JwtPayload(currentUser.id, mallId);

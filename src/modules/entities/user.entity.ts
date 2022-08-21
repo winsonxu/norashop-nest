@@ -1,4 +1,15 @@
+/*
+ * @Author: winsonxu winsonxu@outlook.com
+ * @Date: 2022-08-20 08:33:27
+ * @LastEditors: winsonxu winsonxu@outlook.com
+ * @LastEditTime: 2022-08-21 11:06:18
+ * @Description: 
+ * 
+ * Copyright (c) 2022 by norait, All Rights Reserved. 
+ */
 import { BaseEntity, Column, Entity, Index } from "typeorm";
+
+export enum isAdmin { Normal , Operator, Admin, SuperAdmin }
 
 @Index("username", ["username"], {})
 @Index("access_token", ["accessToken"], {})
@@ -60,6 +71,9 @@ export class UserEntity extends BaseEntity {
 
   @Column("json", { name: "menu", comment: "菜单权限" })
   menu: object;
+
+  @Column("int", { name: "is_admin", default: () => 0 })
+  isAdmin: number;
 
   constructor(init?: Partial<UserEntity>) {
     super();
